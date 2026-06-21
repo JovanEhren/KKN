@@ -103,6 +103,17 @@ html, body {
 .screen.active { opacity: 1; pointer-events: all; }
 
 /* =========================================
+   GITHUB LINK
+========================================= */
+.github-link {
+  position: absolute; top: 16px; right: 18px; z-index: 20;
+  color: rgba(255,255,255,.85);
+  transition: color .2s, transform .2s;
+  display: flex; align-items: center;
+}
+.github-link:hover { color: #fff; transform: scale(1.15); }
+
+/* =========================================
    HOME SCREEN
 ========================================= */
 .hearts-row {
