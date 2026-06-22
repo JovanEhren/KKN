@@ -4,11 +4,12 @@ import { quizData } from '../../data/quiz'
 interface Props {
   active: boolean
   onResult: (score: number, total: number) => void
+  onExit: () => void
 }
 
 const LABELS = ['A', 'B', 'C', 'D']
 
-export function QuizScreen({ active, onResult }: Props) {
+export function QuizScreen({ active, onResult, onExit }: Props) {
   const [qIndex, setQIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [lives, setLives] = useState(3)
@@ -54,6 +55,7 @@ export function QuizScreen({ active, onResult }: Props) {
   return (
     <div className={`screen${active ? ' active' : ''}`}>
       <div className="quiz-topbar">
+        <button className="quiz-exit-btn" onClick={onExit} title="Keluar">✕</button>
         <div className="quiz-lives-display">
           {Array.from({ length: 3 }, (_, i) => (i < lives ? '❤️' : '🖤')).join(' ')}
         </div>
