@@ -17,6 +17,7 @@ export function QuizScreen({ active, questions, onResult, onExit }: Props) {
   const [answered, setAnswered] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [explanation, setExplanation] = useState<{ text: string; correct: boolean } | null>(null)
+  const [showExitConfirm, setShowExitConfirm] = useState(false)
 
   const correctSfx = useRef(new Audio('/SoundEffect/correctPop.mp3'))
   const wrongSfx   = useRef(new Audio('/SoundEffect/wrongPop.mp3'))
@@ -63,7 +64,7 @@ export function QuizScreen({ active, questions, onResult, onExit }: Props) {
   return (
     <div className={`screen${active ? ' active' : ''}`}>
       <div className="quiz-topbar">
-        <button className="quiz-exit-btn" onClick={onExit} title="Keluar">✕</button>
+        <button className="quiz-exit-btn" onClick={() => setShowExitConfirm(true)} title="Keluar">✕</button>
         <div className="quiz-lives-display">
           {Array.from({ length: 3 }, (_, i) => (i < lives ? '❤️' : '🖤')).join(' ')}
         </div>
@@ -99,6 +100,19 @@ export function QuizScreen({ active, questions, onResult, onExit }: Props) {
           )}
         </div>
       </div>
+      {showExitConfirm && (
+        <div className="exit-confirm-overlay">
+          <div className="exit-confirm-card">
+            <div className="exit-confirm-icon">🚪</div>
+            <p className="exit-confirm-title">Yakin mau keluar?</p>
+            <p className="exit-confirm-sub">Progres kuis ini tidak akan tersimpan.</p>
+            <div className="exit-confirm-buttons">
+              <button className="btn btn-home" onClick={onExit}>Keluar</button>
+              <button className="btn btn-latihan" onClick={() => setShowExitConfirm(false)}>Tetap Main</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

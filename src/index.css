@@ -616,6 +616,36 @@ html, body {
 }
 
 /* =========================================
+   EXIT CONFIRM OVERLAY
+========================================= */
+.exit-confirm-overlay {
+  position: absolute; inset: 0; z-index: 50;
+  background: rgba(0,0,0,.55);
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(3px);
+  animation: fadeSlide .2s ease;
+}
+.exit-confirm-card {
+  background: #fff; border-radius: 28px;
+  padding: 36px 44px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+.night .exit-confirm-card { background: #0D1B3E; }
+.exit-confirm-icon { font-size: 3rem; }
+.exit-confirm-title {
+  font-family: 'Fredoka One', cursive; font-size: 1.6rem;
+  color: var(--dark); letter-spacing: 1px;
+}
+.night .exit-confirm-title { color: #e8eeff; }
+.exit-confirm-sub {
+  font-family: 'Nunito', sans-serif; font-size: .95rem; font-weight: 700;
+  color: rgba(0,0,0,.45);
+}
+.night .exit-confirm-sub { color: rgba(255,255,255,.45); }
+.exit-confirm-buttons { display: flex; gap: 14px; margin-top: 6px; }
+
+/* =========================================
    QUIZ RESULT
 ========================================= */
 .result-emoji  { font-size: 6.5rem; animation: floatY 2s ease-in-out infinite; }
