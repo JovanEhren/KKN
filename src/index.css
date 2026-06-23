@@ -289,7 +289,7 @@ html, body {
   text-shadow: 4px 4px 0 var(--dark), 7px 7px 0 rgba(0,0,0,.18);
 }
 
-.home-buttons { display: flex; flex-direction: column; gap: 18px; width: 320px; }
+.home-buttons { display: flex; flex-direction: column; gap: 18px; width: 100%; max-width: 320px; }
 
 /* Buttons */
 .btn {
@@ -645,3 +645,100 @@ html, body {
 ::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,.05); border-radius: 10px; }
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,.2); border-radius: 10px; }
+
+/* =========================================
+   RESPONSIVE — TABLET (≤ 768px)
+========================================= */
+@media (max-width: 768px) {
+  .screen-body { padding: 8px 20px 20px; }
+  .home-body { padding: 0 24px; gap: 28px; }
+  .big-option { padding: 28px 36px; }
+  .quiz-body { padding: 16px 20px; gap: 16px; }
+  .quiz-question { padding: 20px 24px; }
+  .article-box { padding: 20px 22px; }
+}
+
+/* =========================================
+   RESPONSIVE — MOBILE (≤ 540px)
+========================================= */
+@media (max-width: 540px) {
+  /* Fixed buttons */
+  .bgm-btn, .night-btn { width: 40px; height: 40px; font-size: 1.15rem; }
+  .bgm-btn  { right: 12px; top: 10px; }
+  .night-btn { right: 60px; top: 10px; }
+
+  /* Home screen */
+  .hearts-row { font-size: 1.8rem; padding-top: 10px; }
+  .home-body { padding: 0 16px; gap: 0; justify-content: center; }
+  .home-mascot { display: none; }
+  .home-center { gap: 24px; width: 100%; align-items: center; }
+  .main-title { font-size: clamp(2.2rem, 10vw, 3.6rem); letter-spacing: 1px; }
+  .btn { font-size: 1.25rem; padding: 14px 24px; }
+  .btn-mulai { font-size: 1.35rem; padding: 15px 36px; }
+  .home-footer { padding: 8px 16px 12px; }
+
+  /* Generic layout */
+  .screen-body { padding: 6px 12px 16px; gap: 12px; }
+  .page-title { font-size: clamp(1.3rem, 6vw, 1.8rem); }
+  .page-subtitle { font-size: .88rem; }
+  .btn-back { margin: 8px 10px; padding: 7px 16px; font-size: .9rem; }
+
+  /* Materi cards */
+  .two-cards { gap: 12px; }
+  .big-option { padding: 20px 22px; min-width: 120px; gap: 10px; }
+  .big-option-icon { font-size: 2.6rem; }
+  .big-option-label { font-size: 1.15rem; letter-spacing: 1px; }
+
+  /* Topics / quiz-intro grid */
+  .topics-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .topic-card { padding: 16px 10px; gap: 8px; }
+  .topic-icon { font-size: 2rem; }
+  .topic-name { font-size: .8rem; }
+  .topic-chip { font-size: .72rem; padding: 2px 8px; }
+
+  /* Article */
+  .article-box { padding: 14px 14px; max-height: 65vh; font-size: .93rem; }
+  .article-mascot { display: none; }
+
+  /* Video */
+  .video-thumb { height: 80px; }
+  .play-btn { width: 44px; height: 44px; font-size: 1.1rem; }
+  .video-label { font-size: .85rem; padding: 9px 10px; }
+
+  /* Quiz topbar */
+  .quiz-topbar { padding: 8px 10px; gap: 6px; }
+  .quiz-exit-btn { width: 28px; height: 28px; font-size: .85rem; }
+  .quiz-lives-display { font-size: 1rem; }
+  .quiz-score-display { font-size: 1rem; }
+  .quiz-progress-wrap { height: 10px; }
+
+  /* Quiz body */
+  .quiz-body { padding: 10px 10px; gap: 12px; }
+  .quiz-qnum { font-size: .85rem; padding: 4px 16px; }
+  .quiz-question { padding: 14px 14px; font-size: clamp(.95rem, 4vw, 1.15rem); border-radius: 14px; }
+  .quiz-options { grid-template-columns: 1fr; gap: 8px; }
+  .q-opt { padding: 12px 14px; font-size: .92rem; }
+  .quiz-explanation { padding: 10px 14px; font-size: .9rem; }
+
+  /* Quiz result */
+  .result-emoji { font-size: 4rem; }
+  .result-title { font-size: 2rem; }
+  .result-stars { font-size: 2rem; letter-spacing: 4px; }
+  .result-score-box { font-size: 1.4rem; padding: 10px 24px; }
+  .result-msg { font-size: 1rem; padding: 10px 18px; text-align: center; }
+  .result-buttons { flex-direction: column; align-items: stretch; width: 100%; max-width: 260px; gap: 10px; }
+  .result-buttons .btn { width: 100%; text-align: center; }
+
+  /* Chips */
+  .info-chips { gap: 8px; }
+  .chip { font-size: .88rem; padding: 7px 14px; }
+
+  /* Splash */
+  .splash-card { padding: 40px 36px; }
+  .splash-title { font-size: 1.7rem; }
+
+  /* Modal */
+  .modal-box { padding: 14px; border-radius: 16px; }
+  .modal-video-title { font-size: 1rem; padding-right: 30px; margin-bottom: 10px; }
+  .modal-close-btn { width: 28px; height: 28px; font-size: .9rem; top: 8px; right: 8px; }
+}
