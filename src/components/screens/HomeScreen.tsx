@@ -48,12 +48,6 @@ export function HomeScreen({ active, onBelajar, onLatihan }: Props) {
           <span>GitHub</span>
         </a>
 
-        <div className="credits">
-          <p className="credits-title">✨ Tim KKN</p>
-          <p>Nama Anggota 1 &nbsp;·&nbsp; Nama Anggota 2 &nbsp;·&nbsp; Nama Anggota 3</p>
-          <p>Nama Anggota 4 &nbsp;·&nbsp; Nama Anggota 5 &nbsp;·&nbsp; Nama Anggota 6</p>
-          <p className="credits-inst">Universitas · Fakultas · Tahun</p>
-        </div>
       </div>
     </div>
   )

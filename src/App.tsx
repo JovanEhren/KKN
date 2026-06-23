@@ -40,6 +40,7 @@ export default function App() {
   const [quizResult, setQuizResult] = useState<QuizResult>({ score: 0, total: 10 })
   const [muted, setMuted] = useState(false)
   const [splashDone, setSplashDone] = useState(false)
+  const [nightMode, setNightMode] = useState(false)
 
   const lobbyRef = useRef<HTMLAudioElement>(null)
   const quizRef  = useRef<HTMLAudioElement>(null)
@@ -92,7 +93,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className={nightMode ? 'night' : ''}>
       <audio ref={lobbyRef} src="/LobbyStudy_bgm.mp3" loop preload="auto" />
       <audio ref={quizRef}  src="/Quiz_bgm.mp3"       loop preload="auto" />
 
@@ -106,6 +107,9 @@ export default function App() {
         </div>
       )}
 
+      <button className="night-btn" onClick={() => setNightMode(n => !n)} title={nightMode ? 'Mode Siang' : 'Mode Malam'}>
+        {nightMode ? '☀️' : '🌙'}
+      </button>
       <button className="bgm-btn" onClick={toggleMute} title={muted ? 'Nyalakan musik' : 'Matikan musik'}>
         {muted ? '🔇' : '🎵'}
       </button>
@@ -161,6 +165,6 @@ export default function App() {
           onClose={() => setVideoModal(null)}
         />
       )}
-    </>
+    </div>
   )
 }

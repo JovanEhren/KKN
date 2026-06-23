@@ -6,11 +6,7 @@ export function Background() {
       <div className="cloud cloud-2" />
       <div className="cloud cloud-3" />
       <div className="cloud cloud-4" />
-      <div className="hills">
-        <div className="hill hill-back" />
-        <div className="hill hill-mid" />
-        <div className="hill hill-front" />
-      </div>
+      <img className="hills-img" src="/hill.svg" alt="" aria-hidden="true" />
     </div>
   )
 }

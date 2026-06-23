@@ -34,7 +34,7 @@ html, body {
 ========================================= */
 .bg-scene {
   position: fixed; inset: 0; z-index: 0;
-  background: linear-gradient(180deg, var(--sky-hi) 0%, var(--sky-lo) 62%, #7DC95A 62%, var(--ground) 100%);
+  background: linear-gradient(180deg, #5BC8F0 0%, #A8DEFF 100%);
 }
 
 /* Sun */
@@ -85,11 +85,10 @@ html, body {
 }
 
 /* Hills */
-.hills { position: absolute; bottom: 0; left: 0; right: 0; height: 42%; pointer-events: none; }
-.hill  { position: absolute; bottom: 0; border-radius: 50%; }
-.hill-back  { width:70%;height:180px; left:-8%;  background:#4A8E2D; }
-.hill-mid   { width:55%;height:200px; right:-5%; background:#3D7A24; }
-.hill-front { width:45%;height:160px; left:28%;  background:#5BAE3F; }
+.hills-img {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; pointer-events: none;
+}
 
 /* =========================================
    SCREENS
@@ -133,18 +132,96 @@ html, body {
 }
 
 /* =========================================
-   BGM BUTTON
+   FIXED BUTTONS (BGM + NIGHT)
 ========================================= */
-.bgm-btn {
-  position: fixed; top: 14px; right: 18px; z-index: 300;
+.bgm-btn,
+.night-btn {
+  position: fixed; top: 14px; z-index: 300;
   width: 46px; height: 46px; border-radius: 50%; border: none;
   background: rgba(255,255,255,.88);
   font-size: 1.4rem; cursor: pointer;
   box-shadow: 0 4px 14px rgba(0,0,0,.2);
-  transition: transform .2s, background .2s;
+  transition: transform .2s, background .2s, color .2s;
   display: flex; align-items: center; justify-content: center;
 }
-.bgm-btn:hover { transform: scale(1.15); background: #fff; }
+.bgm-btn  { right: 18px; }
+.night-btn { right: 72px; }
+.bgm-btn:hover,
+.night-btn:hover { transform: scale(1.15); background: #fff; }
+
+/* =========================================
+   NIGHT THEME
+========================================= */
+.night .bg-scene {
+  background: linear-gradient(180deg, #060D1F 0%, #0D1F4A 50%, #132048 100%);
+}
+
+.night .sun {
+  background: radial-gradient(circle, #FFF8DC 25%, #FFFACD 60%, #F0E68C 100%);
+  animation: moonGlow 4s ease-in-out infinite;
+}
+@keyframes moonGlow {
+  0%,100% { box-shadow: 0 0 0 16px rgba(255,248,200,.07), 0 0 0 32px rgba(255,248,200,.04); }
+  50%     { box-shadow: 0 0 0 22px rgba(255,248,200,.12), 0 0 0 44px rgba(255,248,200,.07); }
+}
+
+.night .cloud { opacity: .12; }
+
+.night .splash {
+  background: linear-gradient(135deg, #060D1F 0%, #0D1F4A 50%, #0D2E20 100%);
+}
+
+.night .bgm-btn,
+.night .night-btn {
+  background: rgba(20, 30, 65, .9);
+  color: #e8eeff;
+}
+.night .bgm-btn:hover,
+.night .night-btn:hover { background: rgba(35, 50, 100, .98); }
+
+.night .btn-back {
+  background: rgba(20, 30, 65, .88);
+  color: #e8eeff;
+  border-color: rgba(255,255,255,.12);
+}
+.night .btn-back:hover { box-shadow: 0 5px 0 rgba(0,0,0,.35); }
+
+.night .big-option {
+  background: rgba(18, 26, 60, .9);
+  border-color: rgba(255,255,255,.08);
+}
+.night .big-option-label { color: #e8eeff; }
+
+.night .topic-card { background: rgba(18, 26, 60, .9); }
+.night .topic-name  { color: #e8eeff; }
+
+.night .quiz-topbar { background: rgba(8, 14, 38, .92); }
+.night .quiz-score-display { color: #e8eeff; }
+.night .quiz-qnum   { background: rgba(255,255,255,.1); }
+.night .quiz-exit-btn { background: rgba(18, 26, 60, .8); color: #e8eeff; }
+.night .quiz-exit-btn:hover { background: #FF6B6B; color: #fff; }
+
+.night .quiz-question { background: rgba(18, 26, 60, .92); color: #e8eeff; }
+
+.night .q-opt { background: rgba(18, 26, 60, .88); color: #e8eeff; border-color: transparent; }
+.night .q-opt:hover:not(.disabled) { border-color: var(--teal); }
+.night .q-opt.correct { background: #6BCB77; color: #fff; }
+.night .q-opt.wrong   { background: #FF6B6B; color: #fff; }
+
+.night .article-box { background: rgba(18, 26, 60, .92); color: #e8eeff; }
+.night .article-box h3 { color: #74DBD4; }
+.night .article-box::-webkit-scrollbar-thumb { background: var(--teal); }
+
+.night .chip { background: rgba(18, 26, 60, .88); color: #e8eeff; }
+
+.night .result-score-box { background: rgba(18, 26, 60, .9); color: #e8eeff; }
+
+.night .video-card { background: rgba(18, 26, 60, .9); }
+.night .video-label { color: #e8eeff; }
+.night .play-btn    { background: rgba(18, 26, 60, .88); color: #e8eeff; }
+
+.night .modal-box { background: #0D1B3E; }
+.night .modal-video-title { color: #e8eeff; }
 
 /* =========================================
    HOME FOOTER (credits + github)
