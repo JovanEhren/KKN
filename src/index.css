@@ -404,6 +404,12 @@ html, body {
   font-family: 'Fredoka One', cursive;
   font-size: .98rem; color: var(--dark); line-height: 1.5; letter-spacing: .4px;
 }
+.topic-chip {
+  font-family: 'Nunito', sans-serif; font-size: .8rem; font-weight: 700;
+  background: rgba(0,0,0,.07); border-radius: 20px; padding: 3px 10px;
+  color: var(--dark);
+}
+.night .topic-chip { background: rgba(255,255,255,.1); color: #e8eeff; }
 
 /* =========================================
    ARTICLE SCREEN

@@ -1,7 +1,9 @@
+import { topicQuizzes } from '../../data/quiz'
+
 interface Props {
   active: boolean
   onBack: () => void
-  onStart: () => void
+  onStart: (topicIndex: number) => void
 }
 
 export function QuizIntroScreen({ active, onBack, onStart }: Props) {
@@ -9,15 +11,21 @@ export function QuizIntroScreen({ active, onBack, onStart }: Props) {
     <div className={`screen${active ? ' active' : ''}`}>
       <button className="btn-back" onClick={onBack}>← KEMBALI</button>
       <div className="screen-body centered">
-        <div className="quiz-intro-trophy">🏆</div>
-        <h2 className="page-title">LATIHAN SOAL</h2>
-        <p className="page-subtitle">Uji kemampuanmu dengan 10 pertanyaan!</p>
-        <div className="info-chips">
-          <div className="chip">📝 10 Soal</div>
-          <div className="chip">❤️ 3 Nyawa</div>
-          <div className="chip">⭐ Raih Bintang</div>
+        <h2 className="page-title">✏️ PILIH LATIHAN</h2>
+        <p className="page-subtitle">Pilih topik yang ingin kamu latih!</p>
+        <div className="topics-grid">
+          {topicQuizzes.map((t, i) => (
+            <button
+              key={i}
+              className={`topic-card ${t.colorClass}`}
+              onClick={() => onStart(i)}
+            >
+              <span className="topic-icon">{t.icon}</span>
+              <span className="topic-name">{t.label}</span>
+              <span className="topic-chip">📝 {t.questions.length} Soal</span>
+            </button>
+          ))}
         </div>
-        <button className="btn btn-mulai" onClick={onStart}>MULAI! 🚀</button>
       </div>
     </div>
   )

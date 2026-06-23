@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import { quizData } from '../../data/quiz'
+import type { QuizQuestion } from '../../data/quiz'
 
 interface Props {
   active: boolean
+  questions: QuizQuestion[]
   onResult: (score: number, total: number) => void
   onExit: () => void
 }
 
 const LABELS = ['A', 'B', 'C', 'D']
 
-export function QuizScreen({ active, onResult, onExit }: Props) {
+export function QuizScreen({ active, questions, onResult, onExit }: Props) {
   const [qIndex, setQIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [lives, setLives] = useState(3)
@@ -22,7 +23,7 @@ export function QuizScreen({ active, onResult, onExit }: Props) {
     setAnswered(true)
     setSelectedAnswer(selected)
 
-    const q = quizData[qIndex]
+    const q = questions[qIndex]
     const isCorrect = selected === q.correct
 
     const newScore = isCorrect ? score + 1 : score
@@ -38,8 +39,8 @@ export function QuizScreen({ active, onResult, onExit }: Props) {
 
     setTimeout(() => {
       const nextIndex = qIndex + 1
-      if (newLives <= 0 || nextIndex >= quizData.length) {
-        onResult(newScore, quizData.length)
+      if (newLives <= 0 || nextIndex >= questions.length) {
+        onResult(newScore, questions.length)
       } else {
         setQIndex(nextIndex)
         setAnswered(false)
@@ -49,8 +50,8 @@ export function QuizScreen({ active, onResult, onExit }: Props) {
     }, 2200)
   }
 
-  const q = quizData[qIndex]
-  const progressPct = (qIndex / quizData.length) * 100
+  const q = questions[qIndex]
+  const progressPct = (qIndex / questions.length) * 100
 
   return (
     <div className={`screen${active ? ' active' : ''}`}>
@@ -65,7 +66,7 @@ export function QuizScreen({ active, onResult, onExit }: Props) {
         <div className="quiz-score-display">⭐ {score}</div>
       </div>
       <div className="quiz-body">
-        <div className="quiz-qnum">Soal {qIndex + 1} dari {quizData.length}</div>
+        <div className="quiz-qnum">Soal {qIndex + 1} dari {questions.length}</div>
         <div className="quiz-question">{q.question}</div>
         <div className="quiz-options">
           {q.options.map((opt, i) => {

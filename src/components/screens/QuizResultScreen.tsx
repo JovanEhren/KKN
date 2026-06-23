@@ -5,6 +5,7 @@ interface Props {
   active: boolean
   result: QuizResult
   onRetry: () => void
+  onPickTopic: () => void
   onHome: () => void
 }
 
@@ -17,7 +18,7 @@ function getResultContent(pct: number) {
   return { emoji: '📚', title: 'SEMANGAT!', stars: '⭐', msg: 'Baca materinya lagi ya, kamu pasti bisa! 💪' }
 }
 
-export function QuizResultScreen({ active, result, onRetry, onHome }: Props) {
+export function QuizResultScreen({ active, result, onRetry, onPickTopic, onHome }: Props) {
   const confettiRef = useRef<HTMLDivElement>(null)
   const { score, total } = result
   const pct = total > 0 ? (score / total) * 100 : 0
@@ -63,6 +64,7 @@ export function QuizResultScreen({ active, result, onRetry, onHome }: Props) {
         <div className="result-msg">{msg}</div>
         <div className="result-buttons">
           <button className="btn btn-retry" onClick={onRetry}>🔄 Coba Lagi</button>
+          <button className="btn btn-latihan" onClick={onPickTopic}>📋 Pilih Topik</button>
           <button className="btn btn-home" onClick={onHome}>🏠 Menu Utama</button>
         </div>
       </div>

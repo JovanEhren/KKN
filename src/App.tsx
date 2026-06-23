@@ -9,6 +9,7 @@ import { VideoScreen } from './components/screens/VideoScreen'
 import { QuizIntroScreen } from './components/screens/QuizIntroScreen'
 import { QuizScreen } from './components/screens/QuizScreen'
 import { QuizResultScreen } from './components/screens/QuizResultScreen'
+import { topicQuizzes } from './data/quiz'
 
 type Screen =
   | 'home'
@@ -37,7 +38,8 @@ export default function App() {
   const [articleIndex, setArticleIndex] = useState(0)
   const [videoModal, setVideoModal] = useState<VideoModalState | null>(null)
   const [quizKey, setQuizKey] = useState(0)
-  const [quizResult, setQuizResult] = useState<QuizResult>({ score: 0, total: 10 })
+  const [quizTopic, setQuizTopic] = useState(0)
+  const [quizResult, setQuizResult] = useState<QuizResult>({ score: 0, total: 5 })
   const [muted, setMuted] = useState(false)
   const [splashDone, setSplashDone] = useState(false)
   const [nightMode, setNightMode] = useState(false)
@@ -82,7 +84,8 @@ export default function App() {
     setScreen('article')
   }
 
-  const startQuiz = () => {
+  const startQuiz = (topicIdx: number) => {
+    setQuizTopic(topicIdx)
     setQuizKey(k => k + 1)
     setScreen('quiz')
   }
@@ -107,12 +110,16 @@ export default function App() {
         </div>
       )}
 
-      <button className="night-btn" onClick={() => setNightMode(n => !n)} title={nightMode ? 'Mode Siang' : 'Mode Malam'}>
-        {nightMode ? '☀️' : '🌙'}
-      </button>
-      <button className="bgm-btn" onClick={toggleMute} title={muted ? 'Nyalakan musik' : 'Matikan musik'}>
-        {muted ? '🔇' : '🎵'}
-      </button>
+      {!isQuizScreen && (
+        <>
+          <button className="night-btn" onClick={() => setNightMode(n => !n)} title={nightMode ? 'Mode Siang' : 'Mode Malam'}>
+            {nightMode ? '☀️' : '🌙'}
+          </button>
+          <button className="bgm-btn" onClick={toggleMute} title={muted ? 'Nyalakan musik' : 'Matikan musik'}>
+            {muted ? '🔇' : '🎵'}
+          </button>
+        </>
+      )}
 
       <Background />
       <HomeScreen
@@ -149,13 +156,15 @@ export default function App() {
       <QuizScreen
         key={quizKey}
         active={screen === 'quiz'}
+        questions={topicQuizzes[quizTopic].questions}
         onResult={handleQuizResult}
-        onExit={() => setScreen('home')}
+        onExit={() => setScreen('quiz-intro')}
       />
       <QuizResultScreen
         active={screen === 'quiz-result'}
         result={quizResult}
-        onRetry={startQuiz}
+        onRetry={() => startQuiz(quizTopic)}
+        onPickTopic={() => setScreen('quiz-intro')}
         onHome={() => setScreen('home')}
       />
       {videoModal && (
