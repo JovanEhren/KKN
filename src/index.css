@@ -144,8 +144,8 @@ html, body {
   transition: transform .2s, background .2s, color .2s;
   display: flex; align-items: center; justify-content: center;
 }
-.bgm-btn  { right: 18px; }
-.night-btn { right: 72px; }
+.bgm-btn  { left: 18px; }
+.night-btn { left: 72px; }
 .bgm-btn:hover,
 .night-btn:hover { transform: scale(1.15); background: #fff; }
 
@@ -778,8 +778,8 @@ html, body {
 @media (max-width: 540px) {
   /* Fixed buttons */
   .bgm-btn, .night-btn { width: 40px; height: 40px; font-size: 1.15rem; }
-  .bgm-btn  { right: 12px; top: 10px; }
-  .night-btn { right: 60px; top: 10px; }
+  .bgm-btn  { left: 12px; top: 10px; }
+  .night-btn { left: 60px; top: 10px; }
 
   /* Home screen */
   .hearts-row { font-size: 1.8rem; padding-top: 10px; }

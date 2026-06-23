@@ -61,6 +61,7 @@ export default function App() {
   const quizRef  = useRef<HTMLAudioElement>(null)
 
   const isQuizScreen = QUIZ_SCREENS.includes(screen)
+  const showFloatingButtons = screen === 'home' || screen === 'tentang'
 
   const handleSplash = () => {
     const active = isQuizScreen ? quizRef.current : lobbyRef.current
@@ -131,7 +132,7 @@ export default function App() {
         </div>
       )}
 
-      {!isQuizScreen && (
+      {showFloatingButtons && (
         <>
           <button className="night-btn" onClick={() => setNightMode(n => !n)} title={nightMode ? 'Mode Siang' : 'Mode Malam'}>
             {nightMode ? '☀️' : '🌙'}
