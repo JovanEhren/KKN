@@ -3,15 +3,6 @@ interface Props {
   onBack: () => void
 }
 
-const TEAM = [
-  'Nama Anggota 1',
-  'Nama Anggota 2',
-  'Nama Anggota 3',
-  'Nama Anggota 4',
-  'Nama Anggota 5',
-  'Nama Anggota 6',
-]
-
 export function TentangScreen({ active, onBack }: Props) {
   return (
     <div className={`screen${active ? ' active' : ''}`}>
@@ -22,24 +13,10 @@ export function TentangScreen({ active, onBack }: Props) {
 
         <div className="tentang-card">
           <p className="tentang-desc">
-            <strong>Belajar Komunikasi</strong> adalah aplikasi edukatif interaktif untuk anak-anak
+            <strong>Belajar Komunikasi</strong> adalah Website edukatif interaktif untuk anak-anak
             yang membantu mereka memahami dunia komunikasi — mulai dari public speaking,
             bahasa tubuh, hingga cara berpikir kreatif.
           </p>
-
-          <div className="tentang-divider" />
-
-          <div className="tentang-section">
-            <p className="tentang-section-title">🏫 Dibuat oleh Tim KKN</p>
-            <div className="tentang-members">
-              {TEAM.map((name, i) => (
-                <div key={i} className="tentang-member">
-                  <span className="tentang-member-dot">●</span>
-                  <span>{name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
 
           <div className="tentang-divider" />
 

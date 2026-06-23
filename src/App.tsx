@@ -69,7 +69,7 @@ export default function App() {
     pop.volume = 0.5
     const handler = (e: MouseEvent) => {
       const el = e.target as HTMLElement
-      if (el.closest('button, a') && !el.closest('[data-no-pop]')) {
+      if (el.closest('button, a') && !el.closest('[data-no-pop]') && !el.closest('.btn-back')) {
         pop.currentTime = 0
         pop.play().catch(() => {})
       }

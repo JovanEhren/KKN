@@ -79,6 +79,14 @@ html, body {
 .cloud-4::before { width:70px;height:70px; top:-35px; left:22px; }
 .cloud-4::after  { width:48px;height:48px; top:-24px; left:68px; }
 
+.cloud-5 { width:100px;height:32px; top:32%; left:-130px; opacity:.7; animation: cloudMove 28s linear infinite 6s; }
+.cloud-5::before { width:50px;height:50px; top:-25px; left:14px; }
+.cloud-5::after  { width:34px;height:34px; top:-16px; left:48px; }
+
+.cloud-6 { width:120px;height:38px; top:42%; left:-160px; opacity:.6; animation: cloudMove 22s linear infinite 18s; }
+.cloud-6::before { width:60px;height:60px; top:-30px; left:18px; }
+.cloud-6::after  { width:40px;height:40px; top:-20px; left:58px; }
+
 @keyframes cloudMove {
   from { transform: translateX(0); }
   to   { transform: translateX(calc(100vw + 220px)); }

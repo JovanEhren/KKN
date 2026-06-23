@@ -5,7 +5,7 @@ interface Props {
 }
 
 const videos = [
-  { id: 'VIDEO_ID_1', label: '🎤 Public Speaking untuk Anak', thumbClass: 'vt-red' },
+  { id: 'VIDEO_ID_1', label: '🎤 Public Speaking', thumbClass: 'vt-red' },
   { id: 'VIDEO_ID_2', label: '🤝 Komunikasi Nonverbal', thumbClass: 'vt-teal' },
   { id: 'VIDEO_ID_3', label: '💡 Thinking Out of the Box', thumbClass: 'vt-yellow' },
   { id: 'VIDEO_ID_4', label: '🌟 Kreativitas Sehari-hari', thumbClass: 'vt-green' },
