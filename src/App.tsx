@@ -10,6 +10,7 @@ import { QuizIntroScreen } from './components/screens/QuizIntroScreen'
 import { QuizScreen } from './components/screens/QuizScreen'
 import { QuizResultScreen } from './components/screens/QuizResultScreen'
 import { TentangScreen } from './components/screens/TentangScreen'
+import { LandscapeWarning } from './components/LandscapeWarning'
 import { topicQuizzes } from './data/quiz'
 
 type Screen =
@@ -143,6 +144,7 @@ export default function App() {
         </>
       )}
 
+      <LandscapeWarning />
       <Background />
       <HomeScreen
         active={screen === 'home'}

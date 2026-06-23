@@ -640,6 +640,37 @@ html, body {
 }
 
 /* =========================================
+   LANDSCAPE WARNING
+========================================= */
+.landscape-warning {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(6,13,31,.97);
+  display: flex; align-items: center; justify-content: center;
+}
+.landscape-card {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding: 32px 40px; text-align: center;
+}
+.landscape-icon {
+  font-size: 4rem;
+  animation: rotateHint 2.2s ease-in-out infinite;
+}
+@keyframes rotateHint {
+  0%,100% { transform: rotate(0deg); }
+  30%,70% { transform: rotate(90deg); }
+}
+.landscape-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2rem; color: #fff; letter-spacing: 1px;
+}
+.landscape-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem; font-weight: 600;
+  color: rgba(255,255,255,.65); line-height: 1.6;
+}
+.landscape-sub strong { color: var(--teal); }
+
+/* =========================================
    TIP CARD (Home Screen)
 ========================================= */
 .tip-card {
