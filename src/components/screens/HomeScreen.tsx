@@ -1,29 +1,35 @@
+import { useState } from 'react'
+import { tips } from '../../data/tips'
+
 interface Props {
   active: boolean
   onBelajar: () => void
   onLatihan: () => void
+  onTentang: () => void
 }
 
 const GITHUB_URL = 'https://github.com/JovanEhren/KKN'
+const randomTip = tips[Math.floor(Math.random() * tips.length)]
 
-export function HomeScreen({ active, onBelajar, onLatihan }: Props) {
+export function HomeScreen({ active, onBelajar, onLatihan, onTentang }: Props) {
+  const [tip] = useState(randomTip)
+
   return (
     <div className={`screen${active ? ' active' : ''}`}>
-      <div className="hearts-row">
-        <span className="heart">❤️</span>
-        <span className="heart">❤️</span>
-        <span className="heart">❤️</span>
-      </div>
       <div className="home-body">
-        <div className="home-mascot float-anim">🐱</div>
+        <div className="home-mascot float-anim"></div>
         <div className="home-center">
           <h1 className="main-title">BELAJAR<br />KOMUNIKASI</h1>
           <div className="home-buttons">
             <button className="btn btn-belajar" onClick={onBelajar}>📚 BELAJAR</button>
             <button className="btn btn-latihan" onClick={onLatihan}>✏️ LATIHAN</button>
           </div>
+          <div className="tip-card">
+            <span className="tip-label">💡 Tip</span>
+            <span className="tip-text">{tip}</span>
+          </div>
         </div>
-        <div className="home-mascot float-anim delay-anim">😺</div>
+        <div className="home-mascot float-anim delay-anim"></div>
       </div>
 
       <div className="home-footer">
@@ -47,7 +53,7 @@ export function HomeScreen({ active, onBelajar, onLatihan }: Props) {
           </svg>
           <span>GitHub</span>
         </a>
-
+        <button className="tentang-link" onClick={onTentang}>ℹ️ Tentang</button>
       </div>
     </div>
   )

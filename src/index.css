@@ -640,6 +640,120 @@ html, body {
 }
 
 /* =========================================
+   TIP CARD (Home Screen)
+========================================= */
+.tip-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.82); border-radius: 18px;
+  padding: 12px 20px; max-width: 340px; width: 100%;
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  text-align: center;
+}
+.tip-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: .8rem; letter-spacing: 1px;
+  color: var(--teal); text-transform: uppercase;
+}
+.tip-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: .88rem; font-weight: 700;
+  color: var(--dark); line-height: 1.5;
+}
+.night .tip-card { background: rgba(18,26,60,.88); }
+.night .tip-text  { color: #e8eeff; }
+
+/* Tentang button in footer */
+.tentang-link {
+  font-family: 'Fredoka One', cursive; font-size: .95rem; letter-spacing: .5px;
+  color: rgba(255,255,255,.8); background: none; border: none; cursor: pointer;
+  transition: color .2s, transform .2s;
+}
+.tentang-link:hover { color: #fff; transform: scale(1.08); }
+
+/* =========================================
+   HIGH SCORE (Quiz Intro cards)
+========================================= */
+.topic-highscore {
+  font-family: 'Nunito', sans-serif; font-size: .78rem; font-weight: 800;
+  color: #e67e00; background: rgba(255,200,0,.18);
+  border-radius: 20px; padding: 2px 10px;
+}
+.night .topic-highscore { color: #ffd060; background: rgba(255,200,0,.12); }
+
+/* =========================================
+   QUIZ RESULT — new record / best score
+========================================= */
+.result-new-record {
+  font-family: 'Fredoka One', cursive; font-size: 1.6rem;
+  color: #FFD93D; letter-spacing: 2px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.25);
+  animation: floatY 1.5s ease-in-out infinite;
+}
+.result-best {
+  font-family: 'Fredoka One', cursive; font-size: 1.05rem;
+  color: rgba(255,255,255,.85);
+  background: rgba(0,0,0,.14); padding: 6px 20px; border-radius: 20px;
+}
+
+/* =========================================
+   TENTANG SCREEN
+========================================= */
+.tentang-hero { font-size: 5rem; animation: floatY 2s ease-in-out infinite; }
+
+.tentang-card {
+  background: rgba(255,255,255,.93); border-radius: 24px;
+  padding: 28px 36px; width: 100%; max-width: 600px;
+  box-shadow: var(--shadow2);
+  display: flex; flex-direction: column; gap: 0;
+}
+.night .tentang-card { background: rgba(18,26,60,.92); }
+
+.tentang-desc {
+  font-family: 'Nunito', sans-serif; font-size: 1rem;
+  color: var(--dark); line-height: 1.75; text-align: center;
+}
+.night .tentang-desc { color: #e8eeff; }
+
+.tentang-divider {
+  height: 1px; background: rgba(0,0,0,.08);
+  margin: 18px 0;
+}
+.night .tentang-divider { background: rgba(255,255,255,.1); }
+
+.tentang-section { display: flex; flex-direction: column; gap: 12px; }
+.tentang-section-title {
+  font-family: 'Fredoka One', cursive; font-size: 1.05rem;
+  color: var(--dark); letter-spacing: 1px;
+}
+.night .tentang-section-title { color: #e8eeff; }
+
+.tentang-members {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px;
+}
+.tentang-member {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Nunito', sans-serif; font-size: .95rem;
+  font-weight: 700; color: var(--dark);
+}
+.night .tentang-member { color: #e8eeff; }
+.tentang-member-dot { color: var(--teal); font-size: .6rem; }
+
+.tentang-topics {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tentang-topic-chip {
+  font-family: 'Nunito', sans-serif; font-size: .88rem; font-weight: 700;
+  background: rgba(78,205,196,.18); color: var(--dark);
+  border-radius: 20px; padding: 5px 14px;
+}
+.night .tentang-topic-chip { background: rgba(78,205,196,.15); color: #e8eeff; }
+
+.tentang-footer-text {
+  font-family: 'Nunito', sans-serif; font-size: .9rem; font-weight: 700;
+  color: rgba(255,255,255,.8); text-align: center;
+}
+
+/* =========================================
    SCROLLBAR
 ========================================= */
 ::-webkit-scrollbar { width: 7px; }

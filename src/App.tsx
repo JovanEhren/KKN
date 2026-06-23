@@ -9,6 +9,7 @@ import { VideoScreen } from './components/screens/VideoScreen'
 import { QuizIntroScreen } from './components/screens/QuizIntroScreen'
 import { QuizScreen } from './components/screens/QuizScreen'
 import { QuizResultScreen } from './components/screens/QuizResultScreen'
+import { TentangScreen } from './components/screens/TentangScreen'
 import { topicQuizzes } from './data/quiz'
 
 type Screen =
@@ -20,6 +21,7 @@ type Screen =
   | 'quiz-intro'
   | 'quiz'
   | 'quiz-result'
+  | 'tentang'
 
 interface VideoModalState {
   videoId: string
@@ -33,6 +35,15 @@ export interface QuizResult {
 
 const QUIZ_SCREENS: Screen[] = ['quiz-intro', 'quiz', 'quiz-result']
 
+function loadHighScores(): (number | null)[] {
+  try {
+    const stored = localStorage.getItem('kkn_highscores')
+    return stored ? JSON.parse(stored) : [null, null, null, null]
+  } catch {
+    return [null, null, null, null]
+  }
+}
+
 export default function App() {
   const [screen, setScreen] = useState<Screen>('home')
   const [articleIndex, setArticleIndex] = useState(0)
@@ -40,6 +51,8 @@ export default function App() {
   const [quizKey, setQuizKey] = useState(0)
   const [quizTopic, setQuizTopic] = useState(0)
   const [quizResult, setQuizResult] = useState<QuizResult>({ score: 0, total: 5 })
+  const [isNewRecord, setIsNewRecord] = useState(false)
+  const [highScores, setHighScores] = useState<(number | null)[]>(loadHighScores)
   const [muted, setMuted] = useState(false)
   const [splashDone, setSplashDone] = useState(false)
   const [nightMode, setNightMode] = useState(false)
@@ -55,7 +68,6 @@ export default function App() {
     setSplashDone(true)
   }
 
-  // Switch BGM when screen changes (only after splash)
   useEffect(() => {
     if (!splashDone) return
     const lobby = lobbyRef.current
@@ -91,6 +103,15 @@ export default function App() {
   }
 
   const handleQuizResult = (score: number, total: number) => {
+    const prevBest = highScores[quizTopic]
+    const newRecord = prevBest === null || score > prevBest
+    if (newRecord) {
+      const next = [...highScores]
+      next[quizTopic] = score
+      setHighScores(next)
+      localStorage.setItem('kkn_highscores', JSON.stringify(next))
+    }
+    setIsNewRecord(newRecord)
     setQuizResult({ score, total })
     setScreen('quiz-result')
   }
@@ -126,6 +147,7 @@ export default function App() {
         active={screen === 'home'}
         onBelajar={() => setScreen('materi')}
         onLatihan={() => setScreen('quiz-intro')}
+        onTentang={() => setScreen('tentang')}
       />
       <MateriScreen
         active={screen === 'materi'}
@@ -152,6 +174,7 @@ export default function App() {
         active={screen === 'quiz-intro'}
         onBack={() => setScreen('home')}
         onStart={startQuiz}
+        highScores={highScores}
       />
       <QuizScreen
         key={quizKey}
@@ -163,9 +186,15 @@ export default function App() {
       <QuizResultScreen
         active={screen === 'quiz-result'}
         result={quizResult}
+        bestScore={highScores[quizTopic]}
+        isNewRecord={isNewRecord}
         onRetry={() => startQuiz(quizTopic)}
         onPickTopic={() => setScreen('quiz-intro')}
         onHome={() => setScreen('home')}
+      />
+      <TentangScreen
+        active={screen === 'tentang'}
+        onBack={() => setScreen('home')}
       />
       {videoModal && (
         <VideoModal

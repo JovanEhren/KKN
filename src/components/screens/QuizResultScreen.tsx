@@ -4,6 +4,8 @@ import type { QuizResult } from '../../App'
 interface Props {
   active: boolean
   result: QuizResult
+  bestScore: number | null
+  isNewRecord: boolean
   onRetry: () => void
   onPickTopic: () => void
   onHome: () => void
@@ -18,7 +20,7 @@ function getResultContent(pct: number) {
   return { emoji: '📚', title: 'SEMANGAT!', stars: '⭐', msg: 'Baca materinya lagi ya, kamu pasti bisa! 💪' }
 }
 
-export function QuizResultScreen({ active, result, onRetry, onPickTopic, onHome }: Props) {
+export function QuizResultScreen({ active, result, bestScore, isNewRecord, onRetry, onPickTopic, onHome }: Props) {
   const confettiRef = useRef<HTMLDivElement>(null)
   const { score, total } = result
   const pct = total > 0 ? (score / total) * 100 : 0
@@ -61,6 +63,10 @@ export function QuizResultScreen({ active, result, onRetry, onPickTopic, onHome 
         <h2 className="result-title">{title}</h2>
         <div className="result-stars">{stars}</div>
         <div className="result-score-box">Skor: {score} / {total}</div>
+        {isNewRecord && <div className="result-new-record">🏆 Rekor Baru!</div>}
+        {!isNewRecord && bestScore !== null && (
+          <div className="result-best">⭐ Terbaik: {bestScore} / {total}</div>
+        )}
         <div className="result-msg">{msg}</div>
         <div className="result-buttons">
           <button className="btn btn-retry" onClick={onRetry}>🔄 Coba Lagi</button>
