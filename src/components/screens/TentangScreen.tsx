@@ -53,7 +53,7 @@ export function TentangScreen({ active, onBack }: Props) {
           </div>
         </div>
 
-        <p className="tentang-footer-text">Dibuat dengan ❤️ untuk anak-anak Indonesia</p>
+        <p className="tentang-footer-text">Dibuat dengan ❤️ untuk anak-anak Guyangan Kidul</p>
       </div>
     </div>
   )

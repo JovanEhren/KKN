@@ -61,7 +61,7 @@ export default function App() {
   const quizRef  = useRef<HTMLAudioElement>(null)
 
   const isQuizScreen = QUIZ_SCREENS.includes(screen)
-  const showFloatingButtons = screen === 'home' || screen === 'tentang'
+  const showFloatingButtons = screen === 'home'
 
   const handleSplash = () => {
     const active = isQuizScreen ? quizRef.current : lobbyRef.current
