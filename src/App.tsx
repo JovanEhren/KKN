@@ -60,8 +60,23 @@ export default function App() {
 
   const lobbyRef = useRef<HTMLAudioElement>(null)
   const quizRef  = useRef<HTMLAudioElement>(null)
+  const popRef   = useRef(new Audio('/SoundEffect/pop.mp3'))
 
   const isQuizScreen = QUIZ_SCREENS.includes(screen)
+
+  useEffect(() => {
+    const pop = popRef.current
+    pop.volume = 0.5
+    const handler = (e: MouseEvent) => {
+      const el = e.target as HTMLElement
+      if (el.closest('button, a') && !el.closest('[data-no-pop]')) {
+        pop.currentTime = 0
+        pop.play().catch(() => {})
+      }
+    }
+    document.addEventListener('click', handler)
+    return () => document.removeEventListener('click', handler)
+  }, [])
   const showFloatingButtons = screen === 'home'
 
   const handleSplash = () => {
@@ -135,10 +150,10 @@ export default function App() {
 
       {showFloatingButtons && (
         <>
-          <button className="night-btn" onClick={() => setNightMode(n => !n)} title={nightMode ? 'Mode Siang' : 'Mode Malam'}>
+          <button data-no-pop className="night-btn" onClick={() => setNightMode(n => !n)} title={nightMode ? 'Mode Siang' : 'Mode Malam'}>
             {nightMode ? '☀️' : '🌙'}
           </button>
-          <button className="bgm-btn" onClick={toggleMute} title={muted ? 'Nyalakan musik' : 'Matikan musik'}>
+          <button data-no-pop className="bgm-btn" onClick={toggleMute} title={muted ? 'Nyalakan musik' : 'Matikan musik'}>
             {muted ? '🔇' : '🎵'}
           </button>
         </>

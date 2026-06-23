@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import type { QuizQuestion } from '../../data/quiz'
 
 interface Props {
@@ -18,6 +18,9 @@ export function QuizScreen({ active, questions, onResult, onExit }: Props) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [explanation, setExplanation] = useState<{ text: string; correct: boolean } | null>(null)
 
+  const correctSfx = useRef(new Audio('/SoundEffect/correctPop.mp3'))
+  const wrongSfx   = useRef(new Audio('/SoundEffect/wrongPop.mp3'))
+
   const handleAnswer = (selected: number) => {
     if (answered) return
     setAnswered(true)
@@ -25,6 +28,10 @@ export function QuizScreen({ active, questions, onResult, onExit }: Props) {
 
     const q = questions[qIndex]
     const isCorrect = selected === q.correct
+
+    const sfx = isCorrect ? correctSfx.current : wrongSfx.current
+    sfx.currentTime = 0
+    sfx.play().catch(() => {})
 
     const newScore = isCorrect ? score + 1 : score
     const newLives = isCorrect ? lives : lives - 1
