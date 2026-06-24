@@ -11,11 +11,7 @@ Dibuat sebagai bagian dari proyek **KKN (Kuliah Kerja Nyata)**.
 - 📚 **Modul Membaca** — 4 artikel untuk 4 topik materi
 - 🎬 **Bagian Video** — video YouTube per topik
 - ✏️ **Sistem Kuis** — 4 kuis per topik (5 soal masing-masing) dengan nyawa dan skor
-- 🏆 **Skor Terbaik** — skor tertinggi per topik tersimpan otomatis
-- 💡 **Tip Acak** — tip komunikasi baru muncul setiap kali membuka website
-- 🌙 **Mode Malam** — tampilan gelap yang bisa diaktifkan
 - 🎵 **Dual BGM** — musik latar berbeda untuk mode belajar dan kuis
-- 🔊 **Efek Suara** — suara pop, jawaban benar, dan jawaban salah
 - 📱 **Ramah Mobile** — tampilan responsif dengan peringatan rotasi layar
 - ℹ️ **Halaman Tentang** — informasi aplikasi dan topik pembelajaran
 
