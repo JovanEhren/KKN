@@ -5,13 +5,14 @@ interface Props {
   active: boolean
   onBelajar: () => void
   onLatihan: () => void
+  onMinigame: () => void
   onTentang: () => void
 }
 
 const GITHUB_URL = 'https://github.com/JovanEhren/KKN'
 const randomTip = tips[Math.floor(Math.random() * tips.length)]
 
-export function HomeScreen({ active, onBelajar, onLatihan, onTentang }: Props) {
+export function HomeScreen({ active, onBelajar, onLatihan, onMinigame, onTentang }: Props) {
   const [tip] = useState(randomTip)
 
   return (
@@ -23,6 +24,7 @@ export function HomeScreen({ active, onBelajar, onLatihan, onTentang }: Props) {
           <div className="home-buttons">
             <button className="btn btn-belajar" onClick={onBelajar}>📚 BELAJAR</button>
             <button className="btn btn-latihan" onClick={onLatihan}>✏️ LATIHAN</button>
+            <button className="btn btn-minigame" onClick={onMinigame}>🎮 MINI GAME</button>
           </div>
           <div className="tip-card">
             <span className="tip-label">💡 Tip</span>

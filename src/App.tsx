@@ -10,6 +10,10 @@ import { QuizIntroScreen } from './components/screens/QuizIntroScreen'
 import { QuizScreen } from './components/screens/QuizScreen'
 import { QuizResultScreen } from './components/screens/QuizResultScreen'
 import { TentangScreen } from './components/screens/TentangScreen'
+import { MiniGameSelectScreen } from './components/screens/MiniGameSelectScreen'
+import { WordScrambleGame } from './components/screens/WordScrambleGame'
+import { MemoryMatchGame } from './components/screens/MemoryMatchGame'
+import { GuessExpressionGame } from './components/screens/GuessExpressionGame'
 import { LandscapeWarning } from './components/LandscapeWarning'
 import { topicQuizzes } from './data/quiz'
 
@@ -23,6 +27,10 @@ type Screen =
   | 'quiz'
   | 'quiz-result'
   | 'tentang'
+  | 'minigame-select'
+  | 'game-scramble'
+  | 'game-memory'
+  | 'game-expr'
 
 interface VideoModalState {
   videoId: string
@@ -165,6 +173,7 @@ export default function App() {
         active={screen === 'home'}
         onBelajar={() => setScreen('materi')}
         onLatihan={() => setScreen('quiz-intro')}
+        onMinigame={() => setScreen('minigame-select')}
         onTentang={() => setScreen('tentang')}
       />
       <MateriScreen
@@ -213,6 +222,23 @@ export default function App() {
       <TentangScreen
         active={screen === 'tentang'}
         onBack={() => setScreen('home')}
+      />
+      <MiniGameSelectScreen
+        active={screen === 'minigame-select'}
+        onBack={() => setScreen('home')}
+        onSelectGame={g => setScreen(`game-${g}` as Screen)}
+      />
+      <WordScrambleGame
+        active={screen === 'game-scramble'}
+        onBack={() => setScreen('minigame-select')}
+      />
+      <MemoryMatchGame
+        active={screen === 'game-memory'}
+        onBack={() => setScreen('minigame-select')}
+      />
+      <GuessExpressionGame
+        active={screen === 'game-expr'}
+        onBack={() => setScreen('minigame-select')}
       />
       {videoModal && (
         <VideoModal

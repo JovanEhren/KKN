@@ -765,6 +765,146 @@ html, body {
 }
 
 /* =========================================
+   MINI GAME BUTTON (Home)
+========================================= */
+.btn-minigame { background: linear-gradient(145deg,#FFD93D,#FFC000); color: var(--dark); }
+
+/* =========================================
+   MINI GAME SELECT
+========================================= */
+.mg-select-grid {
+  display: flex; flex-direction: column; gap: 14px;
+  width: 100%; max-width: 500px;
+}
+.mg-select-card {
+  display: flex; align-items: center; gap: 18px;
+  background: rgba(255,255,255,.93); border: none; border-radius: 20px;
+  padding: 18px 24px; cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.mg-select-card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(0,0,0,.2); }
+.mg-select-icon { font-size: 2.6rem; flex-shrink: 0; }
+.mg-select-info { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+.mg-select-title {
+  font-family: 'Fredoka One', cursive; font-size: 1.2rem;
+  color: var(--dark); letter-spacing: .5px;
+}
+.mg-select-desc {
+  font-family: 'Nunito', sans-serif; font-size: .85rem;
+  font-weight: 700; color: rgba(0,0,0,.45); text-align: left;
+}
+.night .mg-select-card { background: rgba(18,26,60,.88); }
+.night .mg-select-title { color: #e8eeff; }
+.night .mg-select-desc { color: rgba(255,255,255,.4); }
+
+/* =========================================
+   SHARED MINI GAME
+========================================= */
+.mg-progress {
+  font-family: 'Fredoka One', cursive; font-size: 1rem;
+  background: rgba(0,0,0,.18); color: #fff;
+  padding: 6px 22px; border-radius: 20px; letter-spacing: 1px;
+}
+.mg-result-emoji { font-size: 5rem; animation: floatY 2s ease-in-out infinite; }
+
+/* =========================================
+   WORD SCRAMBLE
+========================================= */
+.mg-hint {
+  font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700;
+  background: rgba(255,255,255,.92); color: var(--dark);
+  padding: 12px 24px; border-radius: 16px; text-align: center;
+  max-width: 420px; width: 100%; box-shadow: var(--shadow);
+}
+.night .mg-hint { background: rgba(18,26,60,.9); color: #e8eeff; }
+
+.mg-answer {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+  min-height: 58px; align-items: center;
+}
+.mg-letter {
+  width: 52px; height: 52px; border-radius: 12px; border: none;
+  font-family: 'Fredoka One', cursive; font-size: 1.5rem;
+  cursor: pointer; transition: transform .15s, opacity .15s;
+  box-shadow: 0 4px 0 rgba(0,0,0,.2);
+  display: flex; align-items: center; justify-content: center;
+}
+.mg-letter-chosen { background: #4ECDC4; color: #fff; }
+.mg-letter-chosen:hover { transform: translateY(-3px); }
+.mg-letter-avail { background: rgba(255,255,255,.92); color: var(--dark); }
+.mg-letter-avail:hover:not(:disabled) { transform: translateY(-3px); }
+.mg-letter-avail.used { opacity: .22; cursor: default; transform: none !important; }
+.mg-letter-empty {
+  width: 52px; height: 52px; border-radius: 12px;
+  border: 3px dashed rgba(255,255,255,.5); background: transparent;
+  flex-shrink: 0;
+}
+.mg-scramble { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; max-width: 420px; }
+.mg-feedback {
+  font-family: 'Fredoka One', cursive; font-size: 1.3rem;
+  padding: 7px 26px; border-radius: 20px; color: #fff;
+  animation: fadeSlide .2s ease;
+}
+.mg-feedback.correct { background: #6BCB77; }
+.mg-feedback.wrong   { background: #FF6B6B; }
+
+/* =========================================
+   MEMORY MATCH
+========================================= */
+.mg-memory-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; max-width: 380px; width: 100%;
+}
+.mg-card {
+  aspect-ratio: 1; border-radius: 14px; border: 3px solid rgba(255,255,255,.3);
+  background: rgba(255,255,255,.15); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s, background .2s;
+  box-shadow: var(--shadow);
+}
+.mg-card:hover:not(.flipped):not(.matched) { transform: scale(1.1); }
+.mg-card-back { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: rgba(255,255,255,.7); }
+.mg-card-front { font-size: 1.6rem; display: none; }
+.mg-card.flipped .mg-card-front,
+.mg-card.matched .mg-card-front { display: flex; }
+.mg-card.flipped .mg-card-back,
+.mg-card.matched .mg-card-back  { display: none; }
+.mg-card.flipped { background: rgba(255,255,255,.92); border-color: var(--teal); }
+.mg-card.matched { background: rgba(107,203,119,.85); border-color: #4CAF50; cursor: default; }
+.night .mg-card { background: rgba(18,26,60,.5); border-color: rgba(255,255,255,.1); }
+.night .mg-card.flipped { background: rgba(30,50,100,.92); }
+
+/* =========================================
+   GUESS EXPRESSION
+========================================= */
+.mg-expr-emoji { font-size: 6rem; animation: floatY 2s ease-in-out infinite; }
+.mg-expr-question {
+  background: rgba(255,255,255,.95); border-radius: 20px;
+  padding: 18px 28px; width: 100%; max-width: 480px;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--dark); text-align: center; box-shadow: var(--shadow2);
+}
+.night .mg-expr-question { background: rgba(18,26,60,.92); color: #e8eeff; }
+.mg-expr-options {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; width: 100%; max-width: 480px;
+}
+.mg-expr-opt {
+  background: rgba(255,255,255,.92); border: 3px solid transparent;
+  border-radius: 16px; padding: 14px 16px;
+  font-family: 'Nunito', sans-serif; font-size: .95rem; font-weight: 700;
+  color: var(--dark); cursor: pointer; box-shadow: var(--shadow);
+  text-align: center; transition: transform .18s, border-color .18s;
+}
+.mg-expr-opt:hover:not(.disabled):not(.correct):not(.wrong) { transform: translateY(-3px); border-color: var(--teal); }
+.mg-expr-opt.correct  { background: #6BCB77; border-color: #4CAF50; color: #fff; }
+.mg-expr-opt.wrong    { background: #FF6B6B; border-color: #E53935; color: #fff; }
+.mg-expr-opt.disabled { opacity: .5; cursor: default; }
+.night .mg-expr-opt { background: rgba(18,26,60,.88); color: #e8eeff; }
+
+/* =========================================
    TENTANG SCREEN
 ========================================= */
 .tentang-hero { font-size: 5rem; animation: floatY 2s ease-in-out infinite; }
@@ -919,6 +1059,17 @@ html, body {
   /* Splash */
   .splash-card { padding: 40px 36px; }
   .splash-title { font-size: 1.7rem; }
+
+  /* Mini games */
+  .mg-memory-grid { gap: 7px; max-width: 300px; }
+  .mg-card { border-radius: 10px; }
+  .mg-card-back, .mg-card-front { font-size: 1.2rem; }
+  .mg-letter { width: 42px; height: 42px; font-size: 1.2rem; }
+  .mg-letter-empty { width: 42px; height: 42px; }
+  .mg-expr-options { grid-template-columns: 1fr; }
+  .mg-expr-emoji { font-size: 4.5rem; }
+  .mg-select-card { padding: 14px 16px; gap: 12px; }
+  .mg-select-icon { font-size: 2rem; }
 
   /* Modal */
   .modal-box { padding: 14px; border-radius: 16px; }
