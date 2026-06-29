@@ -19,7 +19,6 @@ export function ArticleScreen({ active, onBack, articleIndex }: Props) {
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
       </div>
-      <div className="article-mascot float-anim">🦁</div>
     </div>
   )
 }

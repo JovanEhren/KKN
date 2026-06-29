@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { tips } from '../../data/tips'
 
 interface Props {
@@ -10,10 +10,29 @@ interface Props {
 }
 
 const GITHUB_URL = 'https://github.com/JovanEhren/KKN'
-const randomTip = tips[Math.floor(Math.random() * tips.length)]
+
+function randomTipIdx() { return Math.floor(Math.random() * tips.length) }
 
 export function HomeScreen({ active, onBelajar, onLatihan, onMinigame, onTentang }: Props) {
-  const [tip] = useState(randomTip)
+  const [tipIdx, setTipIdx] = useState(randomTipIdx)
+  const [fade, setFade] = useState(true)
+  const tip = tips[tipIdx]
+
+  useEffect(() => {
+    if (!active) return
+    const interval = setInterval(() => {
+      setFade(false)
+      setTimeout(() => {
+        setTipIdx(i => {
+          let next = randomTipIdx()
+          while (next === i) next = randomTipIdx()
+          return next
+        })
+        setFade(true)
+      }, 300)
+    }, 8000)
+    return () => clearInterval(interval)
+  }, [active])
 
   return (
     <div className={`screen${active ? ' active' : ''}`}>
@@ -28,7 +47,7 @@ export function HomeScreen({ active, onBelajar, onLatihan, onMinigame, onTentang
           </div>
           <div className="tip-card">
             <span className="tip-label">💡 Tip</span>
-            <span className="tip-text">{tip}</span>
+            <span className={`tip-text${fade ? '' : ' tip-fade-out'}`}>{tip}</span>
           </div>
         </div>
         <div className="home-mascot float-anim delay-anim"></div>

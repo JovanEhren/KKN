@@ -648,7 +648,7 @@ html, body {
 /* =========================================
    QUIZ RESULT
 ========================================= */
-.result-emoji  { font-size: 6.5rem; animation: floatY 2s ease-in-out infinite; }
+.result-emoji  { font-size: 6.5rem; }
 .result-title  {
   font-family: 'Fredoka One', cursive; font-size: 3rem;
   color: #fff; text-shadow: 3px 3px 0 var(--dark), 5px 5px 0 rgba(0,0,0,.18);
@@ -727,7 +727,9 @@ html, body {
   font-family: 'Nunito', sans-serif;
   font-size: .88rem; font-weight: 700;
   color: var(--dark); line-height: 1.5;
+  transition: opacity .3s ease;
 }
+.tip-fade-out { opacity: 0; }
 .night .tip-card { background: rgba(18,26,60,.88); }
 .night .tip-text  { color: #e8eeff; }
 
@@ -806,7 +808,7 @@ html, body {
   background: rgba(0,0,0,.18); color: #fff;
   padding: 6px 22px; border-radius: 20px; letter-spacing: 1px;
 }
-.mg-result-emoji { font-size: 5rem; animation: floatY 2s ease-in-out infinite; }
+.mg-result-emoji { font-size: 5rem; }
 
 /* =========================================
    WORD SCRAMBLE
@@ -878,7 +880,7 @@ html, body {
 /* =========================================
    GUESS EXPRESSION
 ========================================= */
-.mg-expr-emoji { font-size: 6rem; animation: floatY 2s ease-in-out infinite; }
+.mg-expr-emoji { font-size: 6rem; }
 .mg-expr-question {
   background: rgba(255,255,255,.95); border-radius: 20px;
   padding: 18px 28px; width: 100%; max-width: 480px;
