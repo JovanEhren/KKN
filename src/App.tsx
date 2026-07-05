@@ -115,6 +115,28 @@ export default function App() {
     }
   }, [isQuizScreen, splashDone])
 
+  useEffect(() => {
+    const handleVisibility = () => {
+      const active = isQuizScreen ? quizRef.current : lobbyRef.current
+      if (!active) return
+      if (document.hidden) {
+        active.pause()
+      } else if (splashDone) {
+        active.play().catch(() => {})
+      }
+    }
+    const handlePageHide = () => {
+      lobbyRef.current?.pause()
+      quizRef.current?.pause()
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+    window.addEventListener('pagehide', handlePageHide)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility)
+      window.removeEventListener('pagehide', handlePageHide)
+    }
+  }, [isQuizScreen, splashDone])
+
   const toggleMute = () => {
     if (!lobbyRef.current || !quizRef.current) return
     const next = !muted
