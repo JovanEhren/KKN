@@ -10,9 +10,11 @@ Dibuat sebagai bagian dari proyek **KKN (Kuliah Kerja Nyata)**.
 
 - 📚 **Modul Membaca** — 4 artikel untuk 4 topik materi
 - 🎬 **Bagian Video** — video YouTube per topik
-- ✏️ **Sistem Kuis** — 4 kuis per topik (5 soal masing-masing) dengan nyawa dan skor
-- 🎵 **Dual BGM** — musik latar berbeda untuk mode belajar dan kuis
-- 📱 **Ramah Mobile** — tampilan responsif dengan peringatan rotasi layar
+- ✏️ **Sistem Kuis** — 4 topik kuis dengan 3 tingkat kesulitan (🟢 Mudah/10 soal, 🟡 Sedang/15 soal, 🔴 Sulit/20 soal), nyawa, skor, dan rekor skor tertinggi tersimpan di perangkat
+- 🎮 **Mini Game** — Susun Kata, Cocokkan Kartu (memory match), dan Tebak Ekspresi
+- 🎵 **Dual BGM & SFX** — musik latar berbeda untuk mode belajar dan kuis, dengan efek suara klik/jawaban benar/salah
+- 🌙 **Mode Malam** — beralih tema siang/malam
+- 📱 **Ramah Mobile** — splash screen, tampilan responsif, dan peringatan rotasi layar
 - ℹ️ **Halaman Tentang** — informasi aplikasi dan topik pembelajaran
 
 ---
@@ -77,15 +79,29 @@ KKN/
 │       └── wrongPop.mp3          # Suara jawaban salah
 ├── src/
 │   ├── components/
-│   │   ├── screens/              # Semua komponen layar
+│   │   ├── screens/
+│   │   │   ├── HomeScreen.tsx           # Layar utama
+│   │   │   ├── MateriScreen.tsx         # Pilihan Membaca / Video
+│   │   │   ├── MembacaScreen.tsx        # Daftar artikel
+│   │   │   ├── ArticleScreen.tsx        # Isi artikel
+│   │   │   ├── VideoScreen.tsx          # Daftar video YouTube
+│   │   │   ├── QuizIntroScreen.tsx      # Pilihan topik kuis
+│   │   │   ├── QuizDifficultyScreen.tsx # Pilihan kesulitan & skor tertinggi
+│   │   │   ├── QuizScreen.tsx           # Layar soal kuis
+│   │   │   ├── QuizResultScreen.tsx     # Hasil kuis
+│   │   │   ├── MiniGameSelectScreen.tsx # Pilihan mini game
+│   │   │   ├── WordScrambleGame.tsx     # Mini game: Susun Kata
+│   │   │   ├── MemoryMatchGame.tsx      # Mini game: Cocokkan Kartu
+│   │   │   ├── GuessExpressionGame.tsx  # Mini game: Tebak Ekspresi
+│   │   │   └── TentangScreen.tsx        # Halaman Tentang
 │   │   ├── Background.tsx        # Animasi langit
 │   │   ├── LandscapeWarning.tsx  # Peringatan mode landscape
 │   │   └── VideoModal.tsx        # Modal embed YouTube
 │   ├── data/
 │   │   ├── articles.ts           # Konten artikel (4 topik)
-│   │   ├── quiz.ts               # Soal kuis (4 topik × 5 soal)
+│   │   ├── quiz.ts               # Soal kuis (4 topik × 3 kesulitan)
 │   │   └── tips.ts               # Kumpulan tip acak
-│   ├── App.tsx                   # Komponen utama & state
+│   ├── App.tsx                   # Komponen utama, navigasi & state
 │   ├── index.css                 # Gaya global
 │   └── main.tsx                  # Entry point
 └── index.html
@@ -114,7 +130,7 @@ ID video adalah bagian setelah `?v=` pada URL YouTube:
 | Yang Ingin Diubah | Lokasi File |
 |---|---|
 | Konten artikel | `src/data/articles.ts` |
-| Soal kuis | `src/data/quiz.ts` |
+| Soal kuis & tingkat kesulitan | `src/data/quiz.ts` |
 | Tip harian | `src/data/tips.ts` |
 | Teks halaman Tentang | `src/components/screens/TentangScreen.tsx` |
 | Palet warna | `src/index.css` — variabel `:root` |
