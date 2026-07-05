@@ -385,6 +385,13 @@ html, body {
   font-size: 1.65rem; color: var(--dark); letter-spacing: 2px;
 }
 
+.diff-mudah  { border-color: rgba(107,203,119,.6); }
+.diff-sedang { border-color: rgba(255,217,61,.6); }
+.diff-sulit  { border-color: rgba(255,107,107,.6); }
+.diff-mudah:hover  { box-shadow: 0 18px 40px rgba(107,203,119,.35); }
+.diff-sedang:hover { box-shadow: 0 18px 40px rgba(255,217,61,.35); }
+.diff-sulit:hover  { box-shadow: 0 18px 40px rgba(255,107,107,.35); }
+
 /* =========================================
    TOPICS GRID (Membaca + Video)
 ========================================= */
@@ -443,6 +450,18 @@ html, body {
 .article-box ul li { margin: 7px 0; }
 .article-box ol { margin-left: 22px; }
 .article-box ol li { margin: 7px 0; }
+
+.article-note {
+  background: rgba(255,200,120,.22);
+  border: 2px solid rgba(255,160,60,.4);
+  border-radius: 16px; padding: 14px 18px; margin: 16px 0 6px;
+}
+.article-note-title {
+  font-family: 'Fredoka One', cursive;
+  color: var(--coral); font-size: 1.05rem; margin-bottom: 6px;
+}
+.article-note p { margin-bottom: 0; }
+.night .article-note { background: rgba(255,160,60,.12); border-color: rgba(255,160,60,.3); }
 
 .article-mascot {
   position: fixed; bottom: 16%; right: 3%;

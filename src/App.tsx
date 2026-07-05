@@ -7,6 +7,7 @@ import { MembacaScreen } from './components/screens/MembacaScreen'
 import { ArticleScreen } from './components/screens/ArticleScreen'
 import { VideoScreen } from './components/screens/VideoScreen'
 import { QuizIntroScreen } from './components/screens/QuizIntroScreen'
+import { QuizDifficultyScreen } from './components/screens/QuizDifficultyScreen'
 import { QuizScreen } from './components/screens/QuizScreen'
 import { QuizResultScreen } from './components/screens/QuizResultScreen'
 import { TentangScreen } from './components/screens/TentangScreen'
@@ -15,7 +16,7 @@ import { WordScrambleGame } from './components/screens/WordScrambleGame'
 import { MemoryMatchGame } from './components/screens/MemoryMatchGame'
 import { GuessExpressionGame } from './components/screens/GuessExpressionGame'
 import { LandscapeWarning } from './components/LandscapeWarning'
-import { topicQuizzes } from './data/quiz'
+import { topicQuizzes, type Difficulty } from './data/quiz'
 
 type Screen =
   | 'home'
@@ -24,6 +25,7 @@ type Screen =
   | 'article'
   | 'video'
   | 'quiz-intro'
+  | 'quiz-difficulty'
   | 'quiz'
   | 'quiz-result'
   | 'tentang'
@@ -42,14 +44,18 @@ export interface QuizResult {
   total: number
 }
 
-const QUIZ_SCREENS: Screen[] = ['quiz-intro', 'quiz', 'quiz-result']
+const QUIZ_SCREENS: Screen[] = ['quiz-intro', 'quiz-difficulty', 'quiz', 'quiz-result']
 
-function loadHighScores(): (number | null)[] {
+function scoreKey(topicIdx: number, difficulty: Difficulty) {
+  return `${topicIdx}:${difficulty}`
+}
+
+function loadHighScores(): Record<string, number | null> {
   try {
-    const stored = localStorage.getItem('kkn_highscores')
-    return stored ? JSON.parse(stored) : [null, null, null, null]
+    const stored = localStorage.getItem('kkn_highscores_v2')
+    return stored ? JSON.parse(stored) : {}
   } catch {
-    return [null, null, null, null]
+    return {}
   }
 }
 
@@ -59,9 +65,10 @@ export default function App() {
   const [videoModal, setVideoModal] = useState<VideoModalState | null>(null)
   const [quizKey, setQuizKey] = useState(0)
   const [quizTopic, setQuizTopic] = useState(0)
+  const [quizDifficulty, setQuizDifficulty] = useState<Difficulty>('mudah')
   const [quizResult, setQuizResult] = useState<QuizResult>({ score: 0, total: 5 })
   const [isNewRecord, setIsNewRecord] = useState(false)
-  const [highScores, setHighScores] = useState<(number | null)[]>(loadHighScores)
+  const [highScores, setHighScores] = useState<Record<string, number | null>>(loadHighScores)
   const [muted, setMuted] = useState(false)
   const [splashDone, setSplashDone] = useState(false)
   const [nightMode, setNightMode] = useState(false)
@@ -121,20 +128,26 @@ export default function App() {
     setScreen('article')
   }
 
-  const startQuiz = (topicIdx: number) => {
+  const pickTopic = (topicIdx: number) => {
     setQuizTopic(topicIdx)
+    setScreen('quiz-difficulty')
+  }
+
+  const startQuiz = (topicIdx: number, difficulty: Difficulty) => {
+    setQuizTopic(topicIdx)
+    setQuizDifficulty(difficulty)
     setQuizKey(k => k + 1)
     setScreen('quiz')
   }
 
   const handleQuizResult = (score: number, total: number) => {
-    const prevBest = highScores[quizTopic]
+    const key = scoreKey(quizTopic, quizDifficulty)
+    const prevBest = highScores[key] ?? null
     const newRecord = prevBest === null || score > prevBest
     if (newRecord) {
-      const next = [...highScores]
-      next[quizTopic] = score
+      const next = { ...highScores, [key]: score }
       setHighScores(next)
-      localStorage.setItem('kkn_highscores', JSON.stringify(next))
+      localStorage.setItem('kkn_highscores_v2', JSON.stringify(next))
     }
     setIsNewRecord(newRecord)
     setQuizResult({ score, total })
@@ -200,22 +213,28 @@ export default function App() {
       <QuizIntroScreen
         active={screen === 'quiz-intro'}
         onBack={() => setScreen('home')}
-        onStart={startQuiz}
+        onStart={pickTopic}
+      />
+      <QuizDifficultyScreen
+        active={screen === 'quiz-difficulty'}
+        topicIndex={quizTopic}
+        onBack={() => setScreen('quiz-intro')}
+        onSelect={difficulty => startQuiz(quizTopic, difficulty)}
         highScores={highScores}
       />
       <QuizScreen
         key={quizKey}
         active={screen === 'quiz'}
-        questions={topicQuizzes[quizTopic].questions}
+        questions={topicQuizzes[quizTopic].questions[quizDifficulty]}
         onResult={handleQuizResult}
         onExit={() => setScreen('quiz-intro')}
       />
       <QuizResultScreen
         active={screen === 'quiz-result'}
         result={quizResult}
-        bestScore={highScores[quizTopic]}
+        bestScore={highScores[scoreKey(quizTopic, quizDifficulty)] ?? null}
         isNewRecord={isNewRecord}
-        onRetry={() => startQuiz(quizTopic)}
+        onRetry={() => startQuiz(quizTopic, quizDifficulty)}
         onPickTopic={() => setScreen('quiz-intro')}
         onHome={() => setScreen('home')}
       />

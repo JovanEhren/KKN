@@ -7,150 +7,149 @@ export const articles: Article[] = [
   {
     title: '🎤 PUBLIC SPEAKING: BERANI BERBICARA DI DEPAN UMUM',
     content: `
-      <p>Public speaking adalah kemampuan berbicara di depan banyak orang. Bagi banyak orang ini terasa menakutkan, tapi sebenarnya bisa dipelajari oleh siapa saja — termasuk <strong>kamu!</strong> 💪</p>
+      <p>Pernahkah kamu diminta maju ke depan kelas untuk bercerita atau presentasi? Perasaan itu wajar dialami semua orang. Yuk, kenali lebih dalam apa itu public speaking dan bagaimana cara melakukannya dengan baik!</p>
+
+      <h3>🤔 Apa Itu Public Speaking?</h3>
+      <p>Public speaking adalah kemampuan berbicara di depan orang lain untuk menyampaikan ide, cerita, atau informasi dengan jelas dan percaya diri. Kemampuan ini bukan bakat bawaan — semua orang bisa mempelajarinya lewat latihan, termasuk kamu!</p>
 
       <h3>🎯 Mengapa Public Speaking Penting?</h3>
       <ul>
-        <li>✅ Membantu kamu menyampaikan ide dengan jelas dan meyakinkan</li>
-        <li>✅ Meningkatkan rasa percaya diri dalam kehidupan sehari-hari</li>
-        <li>✅ Memudahkan kamu membuat teman baru dan bersosialisasi</li>
-        <li>✅ Sangat penting saat presentasi di depan kelas</li>
-        <li>✅ Membantumu sukses di masa depan</li>
+        <li>✅ <strong>Membantu menyampaikan pendapat dengan baik</strong> — orang lain jadi lebih mudah memahami maksud kita</li>
+        <li>✅ <strong>Menambah rasa percaya diri</strong> — semakin sering bicara di depan orang, semakin kuat mentalmu</li>
+        <li>✅ <strong>Memudahkan bekerja sama dengan teman</strong> — ide dan hasil diskusi bisa disampaikan dengan jelas saat kerja kelompok</li>
+        <li>✅ <strong>Membantu saat presentasi di kelas</strong> — misalnya saat menceritakan hasil tugas atau proyek sekolah</li>
       </ul>
 
-      <h3>📝 Tips Agar Percaya Diri:</h3>
-      <ol>
-        <li>Persiapkan dirimu dengan baik — tahu apa yang akan disampaikan</li>
-        <li>Latihan di depan cermin atau di hadapan anggota keluarga</li>
-        <li>Tarik napas dalam-dalam sebelum mulai bicara</li>
-        <li>Pandang ke arah penonton dengan tatapan ramah dan terbuka</li>
-        <li>Bicara dengan suara jelas, tidak terlalu cepat, tidak terlalu pelan</li>
-        <li>Tersenyum! Senyum membuatmu terlihat percaya diri 😊</li>
-        <li>Ingat: semua orang pernah nervus — itu sangat wajar!</li>
-      </ol>
-
-      <h3>🏋️ Cara Berlatih:</h3>
+      <h3>📝 Tips Public Speaking</h3>
       <ul>
-        <li>📖 Baca buku dengan suara keras setiap hari</li>
-        <li>🎭 Ikut drama atau pentas seni di sekolah</li>
-        <li>🗣️ Biasakan berdiskusi dan bercerita bersama keluarga</li>
-        <li>📹 Rekam dirimu berbicara, lalu evaluasi hasilnya</li>
-        <li>👥 Gabung ekskul debat atau pidato di sekolah</li>
+        <li>🎤 <strong>Berdiri tegak dan percaya diri</strong> — sikap tubuh yang baik membuat kita terlihat lebih yakin</li>
+        <li>👀 <strong>Lihat ke arah pendengar</strong> — agar mereka merasa diajak bicara, bukan diabaikan</li>
+        <li>😊 <strong>Tersenyum saat berbicara</strong> — membuat suasana lebih hangat dan ramah</li>
+        <li>🗣️ <strong>Gunakan suara yang jelas</strong> — supaya semua orang bisa mendengar dan memahami pesanmu</li>
+        <li>🐢 <strong>Berbicara dengan pelan dan tidak terburu-buru</strong> — beri waktu bagi pendengar untuk mencerna setiap kata</li>
       </ul>
 
-      <h3>🌟 Ingat Selalu!</h3>
-      <p>Banyak orang hebat di dunia yang dulunya juga takut berbicara di depan umum. Dengan latihan rutin dan keberanian yang terus dipupuk, kamu pasti bisa menjadi pembicara yang luar biasa! 🚀</p>
+      <h3>🎬 Contoh Situasi Public Speaking</h3>
+      <ul>
+        <li>🏫 Bercerita di depan kelas tentang liburan</li>
+        <li>👥 Menyampaikan hasil diskusi kelompok</li>
+        <li>🎙️ Memimpin upacara atau menjadi MC acara sekolah</li>
+        <li>🏆 Ikut lomba pidato atau bercerita</li>
+      </ul>
+
+      <div class="article-note">
+        <div class="article-note-title">🏅 Ingat!</div>
+        <p>Tidak apa-apa jika gugup. Semakin sering berlatih, kita akan semakin berani berbicara.</p>
+      </div>
     `,
   },
   {
     title: '🤝 KOMUNIKASI NONVERBAL: BERBICARA TANPA KATA',
     content: `
-      <p>Tahukah kamu bahwa kita bisa berkomunikasi <strong>tanpa menggunakan kata-kata</strong>? Itulah yang disebut <strong>komunikasi nonverbal</strong>! 🤩</p>
+      <p>Tahukah kamu, kita bisa menyampaikan pesan bahkan tanpa mengucapkan sepatah kata pun? Itulah yang disebut komunikasi nonverbal — cara berkomunikasi lewat gerakan dan ekspresi tubuh.</p>
 
-      <h3>🤔 Apa itu Komunikasi Nonverbal?</h3>
-      <p>Komunikasi nonverbal adalah cara menyampaikan pesan lewat gerakan tubuh, ekspresi wajah, nada suara, kontak mata, dan bahasa tubuh lainnya — tanpa satu pun kata yang diucapkan.</p>
+      <h3>🤔 Apa Itu Komunikasi Nonverbal?</h3>
+      <p>Komunikasi nonverbal adalah cara menyampaikan pesan tanpa menggunakan kata-kata, misalnya lewat ekspresi wajah, gerakan tangan, atau sikap tubuh.</p>
 
-      <h3>😊 Contoh Komunikasi Nonverbal Sehari-hari:</h3>
+      <h3>😊 Contohnya</h3>
       <ul>
-        <li>😊 <strong>Senyuman</strong> → Tanda keramahan dan kebahagiaan</li>
-        <li>👍 <strong>Acungan jempol</strong> → Tanda setuju, bagus, atau oke!</li>
-        <li>🤝 <strong>Jabat tangan</strong> → Salam perkenalan dan rasa hormat</li>
-        <li>👁️ <strong>Kontak mata</strong> → Tanda mendengarkan dengan serius</li>
-        <li>💪 <strong>Postur tubuh tegak</strong> → Tanda percaya diri</li>
-        <li>🤷 <strong>Mengangkat bahu</strong> → Tanda tidak tahu atau tidak yakin</li>
-        <li>🙌 <strong>Tepuk tangan</strong> → Tanda penghargaan dan dukungan</li>
-        <li>😮 <strong>Mulut terbuka</strong> → Tanda terkejut atau kagum</li>
+        <li>😊 <strong>Senyum</strong> → menunjukkan keramahan kepada orang lain</li>
+        <li>👍 <strong>Jempol</strong> → menunjukkan persetujuan atau tanda "bagus, kamu hebat!"</li>
+        <li>👋 <strong>Melambaikan tangan</strong> → menyapa teman saat bertemu atau berpisah</li>
+        <li>😢 <strong>Wajah sedih</strong> → menunjukkan kesedihan tanpa perlu mengatakannya</li>
+        <li>👏 <strong>Tepuk tangan</strong> → memberi apresiasi atas usaha atau penampilan seseorang</li>
       </ul>
 
-      <h3>📊 Fakta Menarik!</h3>
-      <p>Penelitian menunjukkan bahwa lebih dari <strong>55%</strong> komunikasi manusia bersifat nonverbal! Artinya, cara kita bergerak dan berekspresi jauh lebih berpengaruh daripada kata-kata yang kita ucapkan. Mengejutkan, bukan? 🧐</p>
-
-      <h3>⚠️ Tips Komunikasi Nonverbal yang Baik:</h3>
+      <h3>⭐ Mengapa Penting?</h3>
       <ul>
-        <li>✅ Pastikan ekspresi wajah sesuai dengan apa yang kamu rasakan</li>
-        <li>✅ Jaga postur tubuh — berdiri/duduk tegak menunjukkan kepercayaan diri</li>
-        <li>✅ Lakukan kontak mata saat berbicara, tapi jangan terlalu lama</li>
-        <li>✅ Gunakan gerak tangan secukupnya untuk memperkuat pesanmu</li>
-        <li>✅ Perhatikan bahasa tubuh orang lain untuk memahami perasaan mereka</li>
+        <li>⭐ <strong>Membantu orang lain memahami perasaan kita</strong>, bahkan saat kita belum sempat bicara</li>
+        <li>⭐ <strong>Membuat komunikasi menjadi lebih jelas</strong>, karena ekspresi memperkuat apa yang kita katakan</li>
+        <li>⭐ <strong>Membantu menunjukkan sikap sopan dan ramah</strong> kepada orang di sekitar kita</li>
       </ul>
+
+      <h3>✅ Tips Komunikasi Nonverbal yang Baik</h3>
+      <ul>
+        <li>✅ <strong>Tersenyum saat bertemu orang</strong> — kesan pertama yang ramah dan menyenangkan</li>
+        <li>✅ <strong>Menatap lawan bicara dengan sopan</strong> — tanda kita benar-benar mendengarkan</li>
+        <li>✅ <strong>Duduk dan berdiri dengan rapi</strong> — menunjukkan sikap sopan dan siap</li>
+        <li>✅ <strong>Menganggukkan kepala saat mendengarkan</strong> — tanda kita memperhatikan lawan bicara</li>
+      </ul>
+
+      <div class="article-note">
+        <div class="article-note-title">🏅 Tahukah Kamu?</div>
+        <p>Kadang-kadang bahasa tubuh bisa menyampaikan pesan lebih kuat daripada kata-kata.</p>
+      </div>
     `,
   },
   {
     title: '💡 THINKING OUT OF THE BOX DASAR',
     content: `
-      <p><strong>Thinking out of the box</strong> artinya berpikir secara kreatif dan tidak terbatas pada cara yang biasa. Ini adalah kemampuan untuk melihat masalah dari sudut pandang yang berbeda dan menemukan solusi yang unik! 🌟</p>
+      <p>Pernah punya masalah yang sepertinya sulit dipecahkan, lalu tiba-tiba menemukan cara unik untuk menyelesaikannya? Itulah yang disebut thinking out of the box!</p>
 
-      <h3>💭 Apa Artinya "Out of the Box"?</h3>
-      <p>Bayangkan sebuah kotak besar. Di dalam kotak itu ada semua cara yang biasa dan umum dilakukan orang. <strong>Berpikir "out of the box"</strong> berarti berani keluar dari kotak itu — mencari cara yang baru, segar, dan belum terpikirkan sebelumnya!</p>
+      <h3>🤔 Apa Itu Thinking Out of the Box?</h3>
+      <p>Thinking out of the box berarti berpikir dengan cara yang berbeda dan kreatif untuk menemukan ide atau solusi baru, bukan sekadar mengikuti cara yang biasa dilakukan orang lain.</p>
 
-      <h3>🔍 Contoh Sederhana:</h3>
+      <h3>💡 Mengapa Kita Perlu Berpikir Kreatif?</h3>
       <ul>
-        <li>✏️ Pensil habis? → Tulis dengan krayon, kapur, atau buat pola dengan jari di pasir</li>
-        <li>🪣 Tidak ada ember? → Gunakan kantong plastik, toples, atau daun pisang besar</li>
-        <li>📚 Buku terlalu berat dibawa? → Foto halamannya dengan ponsel</li>
-        <li>🌧️ Hujan tapi tidak ada payung? → Gunakan tas plastik atau koran di atas kepala</li>
-        <li>🎁 Tidak ada kado? → Buat sesuatu sendiri dengan bahan yang ada di rumah!</li>
+        <li>💡 <strong>Membantu memecahkan masalah</strong> — terutama masalah yang sulit diselesaikan dengan cara biasa</li>
+        <li>💡 <strong>Membuat ide baru yang menarik</strong> — sesuatu yang belum pernah dipikirkan orang lain</li>
+        <li>💡 <strong>Membantu belajar dengan cara yang menyenangkan</strong> — belajar jadi tidak membosankan</li>
       </ul>
 
-      <h3>🧠 Mengapa Kemampuan Ini Penting?</h3>
+      <h3>❄️ Contoh Berpikir Kreatif</h3>
+      <p><strong>Masalah:</strong> Pensilmu terlalu pendek untuk digunakan.</p>
+      <p><strong>Ide Biasa:</strong> Membeli pensil baru.</p>
+      <p><strong>Ide Kreatif:</strong> Menggunakan sambungan pensil atau menjadikannya hiasan karya seni. Lihat, dari satu masalah kecil saja bisa muncul banyak solusi berbeda!</p>
+
+      <h3>🌟 Cara Melatih Berpikir Kreatif</h3>
       <ul>
-        <li>🚀 Membantu menemukan solusi untuk masalah yang sulit</li>
-        <li>🎨 Mendorong kreativitas dan semangat berinovasi</li>
-        <li>🏆 Membuat kamu lebih unggul dalam banyak hal</li>
-        <li>😊 Membuat hidup lebih menyenangkan dan penuh kejutan positif</li>
+        <li>🌟 <strong>Banyak bertanya</strong> — "mengapa" dan "bagaimana jika" membantu menemukan sudut pandang baru</li>
+        <li>🌟 <strong>Berani mencoba hal baru</strong> — meskipun belum yakin hasilnya akan berhasil</li>
+        <li>🌟 <strong>Tidak takut salah</strong> — kesalahan adalah bagian dari proses belajar</li>
+        <li>🌟 <strong>Mendengarkan ide orang lain</strong> — bisa jadi sumber inspirasi yang tidak terpikirkan sebelumnya</li>
       </ul>
 
-      <h3>🏋️ Cara Melatih Kemampuan Ini:</h3>
-      <ol>
-        <li>Biasakan bertanya <strong>"Mengapa?"</strong> dan <strong>"Bagaimana jika?"</strong> setiap hari</li>
-        <li>Coba hal-hal baru yang belum pernah kamu lakukan sebelumnya</li>
-        <li>Bermain permainan puzzle, teka-teki, dan catur</li>
-        <li>Baca buku dari berbagai topik yang beragam</li>
-        <li>Amati masalah dari berbagai sudut pandang yang berbeda</li>
-        <li><strong>Jangan takut membuat kesalahan</strong> — kesalahan adalah guru terbaik!</li>
-        <li>Diskusikan ide-idemu dengan orang lain dan dengarkan perspektif mereka</li>
-      </ol>
+      <div class="article-note">
+        <div class="article-note-title">🏅 Ingat!</div>
+        <p>Tidak ada ide yang langsung sempurna. Ide besar sering dimulai dari ide sederhana.</p>
+      </div>
     `,
   },
   {
     title: '🌟 THINKING OUT OF THE BOX DALAM KEHIDUPAN SEHARI-HARI',
     content: `
-      <p>Setelah memahami dasarnya, mari kita lihat bagaimana <strong>menerapkan thinking out of the box dalam kehidupan nyata</strong>! Banyak hal luar biasa di dunia lahir dari pemikiran kreatif. 🌍</p>
+      <p>Berpikir kreatif tidak hanya berguna saat menghadapi masalah besar — kita bisa menerapkannya setiap hari, di rumah, di sekolah, bahkan saat bermain!</p>
 
-      <h3>🔬 Penemuan Hebat dari Pemikiran Kreatif:</h3>
+      <h3>🏠 Berpikir Kreatif di Rumah</h3>
       <ul>
-        <li>📝 <strong>Post-it Notes:</strong> Awalnya adalah lem yang terlalu lemah dan dianggap gagal. Lalu seseorang berpikir kreatif: "Bagaimana jika lem lemah ini dipakai untuk menempel kertas catatan yang mudah dilepas?" → Jadilah produk paling populer di dunia!</li>
-        <li>🛍️ <strong>Bubble Wrap:</strong> Awalnya dirancang sebagai wallpaper bertekstur. Setelah tidak laku, pembuatnya berpikir: "Bisa digunakan untuk mengemas barang agar tidak pecah!" → Kini digunakan di seluruh dunia!</li>
-        <li>🎮 <strong>Play-Doh:</strong> Awalnya dibuat sebagai pembersih wallpaper berbahan tepung. Ketika tidak laku, seorang guru menemukan ide: "Anak-anak pasti senang bermain dengan bahan lunak ini!" → Jadi mainan paling populer!</li>
+        <li>🏠 <strong>Mengubah botol bekas menjadi pot tanaman</strong> — barang yang tadinya sampah jadi berguna kembali</li>
+        <li>🏠 <strong>Membuat tempat pensil dari kardus bekas</strong> — hemat dan menyenangkan untuk dibuat sendiri</li>
       </ul>
 
-      <h3>🏠 Menerapkan dalam Kehidupan Sehari-hari:</h3>
-
-      <h3>📚 Saat Belajar:</h3>
+      <h3>🎒 Berpikir Kreatif di Sekolah</h3>
       <ul>
-        <li>Buat <strong>peta pikiran (mind map)</strong> berwarna-warni daripada catatan biasa</li>
-        <li>Gunakan warna berbeda untuk setiap topik agar lebih mudah diingat</li>
-        <li>Ajari materi ke teman — cara terbaik untuk memahami lebih dalam!</li>
-        <li>Buat lagu atau rap dari materi yang sulit dihafal</li>
+        <li>🎒 <strong>Membuat cara belajar yang menyenangkan dengan gambar atau warna</strong> — supaya materi lebih mudah diingat</li>
+        <li>🎒 <strong>Membantu teman memahami pelajaran dengan permainan sederhana</strong> — belajar bersama jadi lebih seru</li>
       </ul>
 
-      <h3>🧩 Saat Ada Masalah:</h3>
+      <h3>⚽ Berpikir Kreatif Saat Bermain</h3>
       <ul>
-        <li>Tuliskan <strong>semua</strong> solusi yang mungkin, sebanyak-banyaknya (brainstorming!)</li>
-        <li>Pilih solusi terbaik dan berani mencobanya</li>
-        <li>Jika gagal, evaluasi dan coba solusi lainnya</li>
-        <li>Minta pendapat orang lain untuk mendapat perspektif baru</li>
+        <li>⚽ <strong>Membuat permainan baru bersama teman</strong> — dengan aturan yang kalian ciptakan sendiri</li>
+        <li>🎨 <strong>Membuat karya seni dari barang bekas</strong> — jadi kegiatan seru sekaligus menjaga lingkungan</li>
       </ul>
 
-      <h3>🎮 Saat Bermain:</h3>
+      <h3>🧩 Tantangan Kreatif</h3>
+      <p>Coba lihat benda di sekitarmu! Pilih satu benda, lalu pikirkan:</p>
       <ul>
-        <li>Temukan <strong>cara baru</strong> bermain dengan mainan lama</li>
-        <li>Ciptakan permainan baru bersama teman-teman</li>
-        <li>Gunakan benda-benda di sekitarmu dengan cara yang kreatif</li>
+        <li>❓ Apa fungsi utamanya?</li>
+        <li>❓ Bisakah benda itu digunakan untuk hal lain?</li>
+        <li>❓ Ide baru apa yang bisa kamu buat?</li>
       </ul>
 
-      <h3>🌟 Kamu Pasti Bisa!</h3>
-      <p>Setiap anak memiliki potensi luar biasa untuk berpikir kreatif. Mulailah hari ini dengan mencoba <strong>satu hal baru</strong> yang belum pernah kamu lakukan. Siapa tahu, ide kreatifmu bisa mengubah dunia! 🚀</p>
+      <div class="article-note">
+        <div class="article-note-title">🏅 Pesan Penutup</div>
+        <p>Setiap anak memiliki kreativitas. Jangan takut mencoba, bertanya, dan menemukan cara baru untuk menyelesaikan masalah. Kreativitas membuat belajar dan kehidupan sehari-hari menjadi lebih menyenangkan!</p>
+      </div>
     `,
   },
 ];
