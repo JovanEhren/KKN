@@ -2,7 +2,7 @@
 
 Website edukatif interaktif untuk anak-anak dalam mempelajari dunia komunikasi — mulai dari public speaking, komunikasi nonverbal, hingga cara berpikir kreatif (thinking out of the box).
 
-Dibuat sebagai bagian dari proyek **KKN (Kuliah Kerja Nyata)**.
+Dibuat sebagai bagian dari proyek individu **KKN (Kuliah Kerja Nyata)**.
 
 ---
 
@@ -10,7 +10,7 @@ Dibuat sebagai bagian dari proyek **KKN (Kuliah Kerja Nyata)**.
 
 - 📚 **Modul Membaca** — 4 artikel untuk 4 topik materi
 - 🎬 **Bagian Video** — video YouTube per topik
-- ✏️ **Sistem Kuis** — 4 topik kuis dengan 3 tingkat kesulitan (🟢 Mudah/10 soal, 🟡 Sedang/15 soal, 🔴 Sulit/20 soal), nyawa, skor, dan rekor skor tertinggi tersimpan di perangkat
+- ✏️ **Sistem Kuis** — 4 topik kuis dengan 3 tingkat kesulitan (🟢 Mudah/10 soal, 🟡 Sedang/15 soal, 🔴 Sulit/20 soal), skor, dan rekor skor tertinggi tersimpan di perangkat
 - 🎮 **Mini Game** — Susun Kata, Cocokkan Kartu (memory match), dan Tebak Ekspresi
 - 🎵 **Dual BGM & SFX** — musik latar berbeda untuk mode belajar dan kuis, dengan efek suara klik/jawaban benar/salah
 - 🌙 **Mode Malam** — beralih tema siang/malam
