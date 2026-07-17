@@ -22,9 +22,17 @@ function getResultContent(pct: number) {
 
 export function QuizResultScreen({ active, result, bestScore, isNewRecord, onRetry, onPickTopic, onHome }: Props) {
   const confettiRef = useRef<HTMLDivElement>(null)
+  const congratsSfx = useRef(new Audio('/SoundEffect/congrats.mp3'))
   const { score, total } = result
   const pct = total > 0 ? (score / total) * 100 : 0
   const { emoji, title, stars, msg } = getResultContent(pct)
+
+  useEffect(() => {
+    if (!active) return
+    const sfx = congratsSfx.current
+    sfx.currentTime = 0
+    sfx.play().catch(() => {})
+  }, [active])
 
   useEffect(() => {
     const wrap = confettiRef.current

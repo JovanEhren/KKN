@@ -9,11 +9,12 @@ interface Props {
 }
 
 const LABELS = ['A', 'B', 'C', 'D']
+const MAX_LIVES = 5
 
 export function QuizScreen({ active, questions, onResult, onExit }: Props) {
   const [qIndex, setQIndex] = useState(0)
   const [score, setScore] = useState(0)
-  const [lives, setLives] = useState(3)
+  const [lives, setLives] = useState(MAX_LIVES)
   const [answered, setAnswered] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [explanation, setExplanation] = useState<{ text: string; correct: boolean } | null>(null)
@@ -66,7 +67,7 @@ export function QuizScreen({ active, questions, onResult, onExit }: Props) {
       <div className="quiz-topbar">
         <button className="quiz-exit-btn" onClick={() => setShowExitConfirm(true)} title="Keluar">✕</button>
         <div className="quiz-lives-display">
-          {Array.from({ length: 3 }, (_, i) => (i < lives ? '❤️' : '🖤')).join(' ')}
+          {Array.from({ length: MAX_LIVES }, (_, i) => (i < lives ? '❤️' : '🖤')).join(' ')}
         </div>
         <div className="quiz-progress-wrap">
           <div className="quiz-progress-fill" style={{ width: `${progressPct}%` }} />
