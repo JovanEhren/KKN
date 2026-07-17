@@ -46,6 +46,16 @@ export interface QuizResult {
 
 const QUIZ_SCREENS: Screen[] = ['quiz-intro', 'quiz-difficulty', 'quiz', 'quiz-result']
 
+const VIDEO_UNLOCK_AT = new Date('2026-07-20T13:00:00+07:00').getTime()
+
+function formatUnlockLabel(timestamp: number) {
+  return new Intl.DateTimeFormat('id-ID', {
+    day: 'numeric', month: 'long', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+    timeZone: 'Asia/Jakarta',
+  }).format(timestamp) + ' WIB'
+}
+
 function scoreKey(topicIdx: number, difficulty: Difficulty) {
   return `${topicIdx}:${difficulty}`
 }
@@ -72,11 +82,10 @@ export default function App() {
   const [muted, setMuted] = useState(false)
   const [splashDone, setSplashDone] = useState(false)
   const [nightMode, setNightMode] = useState(false)
-
+  const [now, setNow] = useState(() => Date.now())
   const lobbyRef = useRef<HTMLAudioElement>(null)
   const quizRef  = useRef<HTMLAudioElement>(null)
   const popRef   = useRef(new Audio('/SoundEffect/pop.mp3'))
-
   const isQuizScreen = QUIZ_SCREENS.includes(screen)
 
   useEffect(() => {
@@ -136,6 +145,14 @@ export default function App() {
       window.removeEventListener('pagehide', handlePageHide)
     }
   }, [isQuizScreen, splashDone])
+
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 30000)
+    return () => clearInterval(id)
+  }, [])
+
+  const videoLocked = now < VIDEO_UNLOCK_AT
+  const videoUnlockLabel = formatUnlockLabel(VIDEO_UNLOCK_AT)
 
   const toggleMute = () => {
     if (!lobbyRef.current || !quizRef.current) return
@@ -215,7 +232,9 @@ export default function App() {
         active={screen === 'materi'}
         onBack={() => setScreen('home')}
         onMembaca={() => setScreen('membaca')}
-        onVideo={() => setScreen('video')}
+        onVideo={() => { if (!videoLocked) setScreen('video') }}
+        videoLocked={videoLocked}
+        videoUnlockLabel={videoUnlockLabel}
       />
       <MembacaScreen
         active={screen === 'membaca'}
