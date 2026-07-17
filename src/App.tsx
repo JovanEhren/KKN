@@ -245,6 +245,7 @@ export default function App() {
         active={screen === 'article'}
         onBack={() => setScreen('membaca')}
         articleIndex={articleIndex}
+        onNavigate={setArticleIndex}
       />
       <VideoScreen
         active={screen === 'video'}
