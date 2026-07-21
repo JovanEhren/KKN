@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react'
+import type { Difficulty } from '../../data/quiz'
 
-const EMOJIS = ['🎤', '😊', '👁️', '💡', '🤝', '💪', '🗣️', '📝']
+const EMOJI_POOL = ['🎤', '😊', '👁️', '💡', '🤝', '💪', '🗣️', '📝', '👏', '👂']
+
+const PAIR_COUNT: Record<Difficulty, number> = {
+  mudah: 6,
+  sedang: 8,
+  sulit: 10,
+}
 
 interface Card {
   uid: number
@@ -9,8 +16,9 @@ interface Card {
   matched: boolean
 }
 
-function createCards(): Card[] {
-  const cards: Card[] = [...EMOJIS, ...EMOJIS].map((emoji, i) => ({
+function createCards(difficulty: Difficulty): Card[] {
+  const emojis = EMOJI_POOL.slice(0, PAIR_COUNT[difficulty])
+  const cards: Card[] = [...emojis, ...emojis].map((emoji, i) => ({
     uid: i, emoji, flipped: false, matched: false,
   }))
   for (let i = cards.length - 1; i > 0; i--) {
@@ -22,22 +30,24 @@ function createCards(): Card[] {
 
 interface Props {
   active: boolean
+  difficulty: Difficulty
   onBack: () => void
 }
 
-export function MemoryMatchGame({ active, onBack }: Props) {
-  const [cards, setCards]       = useState<Card[]>(createCards)
+export function MemoryMatchGame({ active, difficulty, onBack }: Props) {
+  const [cards, setCards]       = useState<Card[]>(() => createCards(difficulty))
   const [firstPick, setFirstPick] = useState<number | null>(null)
   const [locked, setLocked]     = useState(false)
   const [moves, setMoves]       = useState(0)
 
   useEffect(() => {
     if (!active) return
-    setCards(createCards()); setFirstPick(null); setLocked(false); setMoves(0)
-  }, [active])
+    setCards(createCards(difficulty)); setFirstPick(null); setLocked(false); setMoves(0)
+  }, [active, difficulty])
 
+  const totalPairs = PAIR_COUNT[difficulty]
   const matched = cards.filter(c => c.matched).length / 2
-  const done = matched === EMOJIS.length
+  const done = matched === totalPairs
 
   const handleCardClick = (idx: number) => {
     if (locked || cards[idx].flipped || cards[idx].matched) return
@@ -72,7 +82,7 @@ export function MemoryMatchGame({ active, onBack }: Props) {
   }
 
   const reset = () => {
-    setCards(createCards()); setFirstPick(null); setLocked(false); setMoves(0)
+    setCards(createCards(difficulty)); setFirstPick(null); setLocked(false); setMoves(0)
   }
 
   return (
@@ -90,7 +100,7 @@ export function MemoryMatchGame({ active, onBack }: Props) {
           </>
         ) : (
           <>
-            <div className="mg-progress">🃏 {matched}/{EMOJIS.length} cocok &nbsp;·&nbsp; 👣 {moves} langkah</div>
+            <div className="mg-progress">🃏 {matched}/{totalPairs} cocok &nbsp;·&nbsp; 👣 {moves} langkah</div>
             <div className="mg-memory-grid">
               {cards.map((card, i) => (
                 <button

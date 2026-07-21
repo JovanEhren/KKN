@@ -4,7 +4,7 @@ interface Props {
   onSelectGame: (game: 'scramble' | 'memory' | 'expr') => void
 }
 
-const GAMES = [
+export const GAMES = [
   {
     id: 'scramble' as const,
     icon: '🔤',

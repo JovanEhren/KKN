@@ -14,7 +14,12 @@ export function VideoScreen({ active, onBack, onOpenVideo }: Props) {
         <h2 className="page-title">🎬 LIHAT VIDEO</h2>
         <div className="topics-grid">
           {explainers.map((v, i) => (
-            <div key={i} className="video-card" onClick={() => onOpenVideo(i)}>
+            <div
+              key={i}
+              className="video-card"
+              style={{ animationDelay: `${i * 90}ms` }}
+              onClick={() => onOpenVideo(i)}
+            >
               <div className={`video-thumb vt-${v.theme}`}>
                 <div className="play-btn">▶</div>
               </div>

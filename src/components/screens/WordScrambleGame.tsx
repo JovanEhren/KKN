@@ -1,12 +1,35 @@
 import { useState, useEffect } from 'react'
+import type { Difficulty } from '../../data/quiz'
 
-const WORDS = [
-  { word: 'SENYUM',  hint: 'Ekspresi wajah yang ramah dan hangat 😊' },
-  { word: 'BERANI',  hint: 'Tidak takut berbicara di depan umum 🎤' },
-  { word: 'KREATIF', hint: 'Mampu berpikir dengan cara yang unik dan berbeda 💡' },
-  { word: 'GESTUR',  hint: 'Gerakan tubuh yang digunakan saat berkomunikasi 🤝' },
-  { word: 'PERCAYA', hint: 'Yakin pada kemampuan diri sendiri 💪' },
-]
+const WORDS_BY_DIFFICULTY: Record<Difficulty, { word: string; hint: string }[]> = {
+  mudah: [
+    { word: 'SUARA',  hint: 'Bunyi yang keluar saat kita berbicara 🗣️' },
+    { word: 'SOPAN',  hint: 'Sikap yang menghargai orang lain 🙏' },
+    { word: 'RAMAH',  hint: 'Sikap baik dan bersahabat 😊' },
+    { word: 'TEGAS',  hint: 'Berbicara dengan jelas dan penuh keyakinan 💪' },
+    { word: 'SENYUM', hint: 'Ekspresi wajah yang ramah dan hangat 😊' },
+    { word: 'BAHASA', hint: 'Alat yang kita pakai untuk berkomunikasi 💬' },
+  ],
+  sedang: [
+    { word: 'BERANI',  hint: 'Tidak takut berbicara di depan umum 🎤' },
+    { word: 'DENGAR',  hint: 'Menyimak apa yang dikatakan orang lain 👂' },
+    { word: 'GESTUR',  hint: 'Gerakan tubuh yang digunakan saat berkomunikasi 🤝' },
+    { word: 'SANTUN',  hint: 'Berperilaku sopan dan menghormati orang lain 🙇' },
+    { word: 'PERCAYA', hint: 'Yakin pada kemampuan diri sendiri 💪' },
+    { word: 'MENATAP', hint: 'Melihat lawan bicara dengan sopan 👀' },
+    { word: 'KREATIF', hint: 'Mampu berpikir dengan cara yang unik dan berbeda 💡' },
+  ],
+  sulit: [
+    { word: 'EKSPRESI',   hint: 'Cara wajah menunjukkan perasaan 😄' },
+    { word: 'PANGGUNG',   hint: 'Tempat kita tampil berbicara di depan orang banyak 🎭' },
+    { word: 'INTONASI',   hint: 'Naik turunnya nada suara saat berbicara 🎵' },
+    { word: 'INSPIRASI',  hint: 'Ide yang muncul dan mendorong kita berkarya ✨' },
+    { word: 'APRESIASI',  hint: 'Penghargaan atas usaha atau karya seseorang 👏' },
+    { word: 'TOLERANSI',  hint: 'Sikap menghargai perbedaan pendapat orang lain 🤲' },
+    { word: 'MENDENGAR',  hint: 'Memperhatikan dengan saksama apa yang disampaikan orang lain 👂' },
+    { word: 'KOMUNIKASI', hint: 'Proses menyampaikan pesan antara satu orang dengan lainnya 💬' },
+  ],
+}
 
 function shuffleWord(word: string): string[] {
   const arr = word.split('')
@@ -23,10 +46,12 @@ function shuffleWord(word: string): string[] {
 
 interface Props {
   active: boolean
+  difficulty: Difficulty
   onBack: () => void
 }
 
-export function WordScrambleGame({ active, onBack }: Props) {
+export function WordScrambleGame({ active, difficulty, onBack }: Props) {
+  const WORDS = WORDS_BY_DIFFICULTY[difficulty]
   const [wIdx, setWIdx]       = useState(0)
   const [shuffled, setShuffled] = useState(() => shuffleWord(WORDS[0].word))
   const [chosen, setChosen]   = useState<number[]>([])
@@ -36,9 +61,9 @@ export function WordScrambleGame({ active, onBack }: Props) {
 
   useEffect(() => {
     if (!active) return
-    setWIdx(0); setShuffled(shuffleWord(WORDS[0].word))
+    setWIdx(0); setShuffled(shuffleWord(WORDS_BY_DIFFICULTY[difficulty][0].word))
     setChosen([]); setStatus('idle'); setScore(0); setDone(false)
-  }, [active])
+  }, [active, difficulty])
 
   const word = WORDS[wIdx]
 
@@ -87,7 +112,7 @@ export function WordScrambleGame({ active, onBack }: Props) {
       <div className="screen-body centered" style={{ gap: 16 }}>
         {done ? (
           <>
-            <div className="mg-result-emoji">{score >= 4 ? '🏆' : score >= 3 ? '🥇' : '📚'}</div>
+            <div className="mg-result-emoji">{score >= WORDS.length - 1 ? '🏆' : score >= Math.ceil(WORDS.length / 2) ? '🥇' : '📚'}</div>
             <h2 className="page-title">Selesai!</h2>
             <div className="result-score-box">Skor: {score} / {WORDS.length}</div>
             <div className="result-buttons">

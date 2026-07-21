@@ -11,7 +11,8 @@ import { QuizDifficultyScreen } from './components/screens/QuizDifficultyScreen'
 import { QuizScreen } from './components/screens/QuizScreen'
 import { QuizResultScreen } from './components/screens/QuizResultScreen'
 import { TentangScreen } from './components/screens/TentangScreen'
-import { MiniGameSelectScreen } from './components/screens/MiniGameSelectScreen'
+import { MiniGameSelectScreen, GAMES } from './components/screens/MiniGameSelectScreen'
+import { MiniGameDifficultyScreen } from './components/screens/MiniGameDifficultyScreen'
 import { WordScrambleGame } from './components/screens/WordScrambleGame'
 import { MemoryMatchGame } from './components/screens/MemoryMatchGame'
 import { GuessExpressionGame } from './components/screens/GuessExpressionGame'
@@ -30,9 +31,12 @@ type Screen =
   | 'quiz-result'
   | 'tentang'
   | 'minigame-select'
+  | 'minigame-difficulty'
   | 'game-scramble'
   | 'game-memory'
   | 'game-expr'
+
+type MiniGameId = 'scramble' | 'memory' | 'expr'
 
 interface VideoModalState {
   topicIndex: number
@@ -45,7 +49,7 @@ export interface QuizResult {
 
 const QUIZ_SCREENS: Screen[] = ['quiz-intro', 'quiz-difficulty', 'quiz', 'quiz-result']
 
-const VIDEO_UNLOCK_AT = new Date('2026-07-22T00:00:00+07:00').getTime()
+const VIDEO_UNLOCK_AT = new Date('2026-07-27T00:00:00+07:00').getTime()
 
 function formatUnlockLabel(timestamp: number) {
   return new Intl.DateTimeFormat('id-ID', {
@@ -53,6 +57,12 @@ function formatUnlockLabel(timestamp: number) {
     hour: '2-digit', minute: '2-digit',
     timeZone: 'Asia/Jakarta',
   }).format(timestamp) + ' WIB'
+}
+
+const MINIGAME_META: Record<MiniGameId, { unitLabel: string; counts: Record<Difficulty, number> }> = {
+  scramble: { unitLabel: 'kata',         counts: { mudah: 6, sedang: 7, sulit: 8 } },
+  expr:     { unitLabel: 'soal',         counts: { mudah: 6, sedang: 6, sulit: 8 } },
+  memory:   { unitLabel: 'pasang kartu', counts: { mudah: 6, sedang: 8, sulit: 10 } },
 }
 
 function scoreKey(topicIdx: number, difficulty: Difficulty) {
@@ -75,6 +85,8 @@ export default function App() {
   const [quizKey, setQuizKey] = useState(0)
   const [quizTopic, setQuizTopic] = useState(0)
   const [quizDifficulty, setQuizDifficulty] = useState<Difficulty>('mudah')
+  const [miniGame, setMiniGame] = useState<MiniGameId>('scramble')
+  const [miniGameDifficulty, setMiniGameDifficulty] = useState<Difficulty>('mudah')
   const [quizResult, setQuizResult] = useState<QuizResult>({ score: 0, total: 5 })
   const [isNewRecord, setIsNewRecord] = useState(false)
   const [highScores, setHighScores] = useState<Record<string, number | null>>(loadHighScores)
@@ -286,18 +298,30 @@ export default function App() {
       <MiniGameSelectScreen
         active={screen === 'minigame-select'}
         onBack={() => setScreen('home')}
-        onSelectGame={g => setScreen(`game-${g}` as Screen)}
+        onSelectGame={g => { setMiniGame(g); setScreen('minigame-difficulty') }}
+      />
+      <MiniGameDifficultyScreen
+        active={screen === 'minigame-difficulty'}
+        icon={GAMES.find(g => g.id === miniGame)!.icon}
+        title={GAMES.find(g => g.id === miniGame)!.title}
+        unitLabel={MINIGAME_META[miniGame].unitLabel}
+        counts={MINIGAME_META[miniGame].counts}
+        onBack={() => setScreen('minigame-select')}
+        onSelect={difficulty => { setMiniGameDifficulty(difficulty); setScreen(`game-${miniGame}` as Screen) }}
       />
       <WordScrambleGame
         active={screen === 'game-scramble'}
+        difficulty={miniGameDifficulty}
         onBack={() => setScreen('minigame-select')}
       />
       <MemoryMatchGame
         active={screen === 'game-memory'}
+        difficulty={miniGameDifficulty}
         onBack={() => setScreen('minigame-select')}
       />
       <GuessExpressionGame
         active={screen === 'game-expr'}
+        difficulty={miniGameDifficulty}
         onBack={() => setScreen('minigame-select')}
       />
       {videoModal && (
