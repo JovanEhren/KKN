@@ -35,8 +35,7 @@ type Screen =
   | 'game-expr'
 
 interface VideoModalState {
-  videoId: string
-  title: string
+  topicIndex: number
 }
 
 export interface QuizResult {
@@ -46,7 +45,7 @@ export interface QuizResult {
 
 const QUIZ_SCREENS: Screen[] = ['quiz-intro', 'quiz-difficulty', 'quiz', 'quiz-result']
 
-const VIDEO_UNLOCK_AT = new Date('2026-07-20T13:00:00+07:00').getTime()
+const VIDEO_UNLOCK_AT = new Date('2026-07-22T00:00:00+07:00').getTime()
 
 function formatUnlockLabel(timestamp: number) {
   return new Intl.DateTimeFormat('id-ID', {
@@ -250,7 +249,7 @@ export default function App() {
       <VideoScreen
         active={screen === 'video'}
         onBack={() => setScreen('materi')}
-        onOpenVideo={(id, title) => setVideoModal({ videoId: id, title })}
+        onOpenVideo={topicIndex => setVideoModal({ topicIndex })}
       />
       <QuizIntroScreen
         active={screen === 'quiz-intro'}
@@ -303,8 +302,7 @@ export default function App() {
       />
       {videoModal && (
         <VideoModal
-          videoId={videoModal.videoId}
-          title={videoModal.title}
+          topicIndex={videoModal.topicIndex}
           onClose={() => setVideoModal(null)}
         />
       )}
