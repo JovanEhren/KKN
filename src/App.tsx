@@ -49,6 +49,15 @@ export interface QuizResult {
 
 const QUIZ_SCREENS: Screen[] = ['quiz-intro', 'quiz-difficulty', 'quiz', 'quiz-result']
 
+// Reading material and mini games get quieter background music so it doesn't
+// compete with reading focus or game sound effects.
+const QUIET_BGM_SCREENS: Screen[] = [
+  'materi', 'membaca', 'article', 'video',
+  'minigame-select', 'minigame-difficulty', 'game-scramble', 'game-memory', 'game-expr',
+]
+const NORMAL_BGM_VOLUME = 1
+const QUIET_BGM_VOLUME = 0.3
+
 const VIDEO_UNLOCK_AT = new Date('2026-07-27T00:00:00+07:00').getTime()
 
 function formatUnlockLabel(timestamp: number) {
@@ -134,6 +143,12 @@ export default function App() {
       lobby.play().catch(() => {})
     }
   }, [isQuizScreen, splashDone])
+
+  useEffect(() => {
+    const lobby = lobbyRef.current
+    if (!lobby) return
+    lobby.volume = QUIET_BGM_SCREENS.includes(screen) ? QUIET_BGM_VOLUME : NORMAL_BGM_VOLUME
+  }, [screen])
 
   useEffect(() => {
     const handleVisibility = () => {
